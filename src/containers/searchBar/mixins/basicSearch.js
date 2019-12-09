@@ -38,7 +38,9 @@ export default {
     return {
       query: {},
       defLabelWidth: '100px',
-      subFormItems: []
+      subFormItems: [],
+      carriersL: [],
+      carriersR: []
     }
   },
   watch: {
@@ -123,6 +125,26 @@ export default {
       })
       console.log(allItems)
       return allItems
+    },
+    packItems() {
+      const items = []
+      return this.allItemsFn(items, this.fieldsArr)
+    },
+    unpackItems() {
+      const unpackItems = []
+      return this.allItemsFn(unpackItems, this.fieldsArr)
+    },
+    allItemsFn(arg, curArr) {
+      const allItems = this.getAllItems()
+      if (!curArr) {
+        curArr = this.fieldsArr
+      }
+      for (let i = 0, len = curArr.length; i < len; i++) {
+        if (allItems[curArr[i].key]) {
+          arg.push(allItems[curArr[i].key])
+        }
+      }
+      return arg
     }
   }
 }

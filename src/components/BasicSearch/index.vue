@@ -9,7 +9,7 @@
           :label-width="labelWidth + 'px'"
           @submit.native.prevent
         >
-          <slot name="pack" />
+          <slot name="unpack" />
         </el-form>
       </div>
       <div class="basic-search__col-r">

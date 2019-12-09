@@ -27,9 +27,10 @@ export default {
         handle-search={this.searchBack}
         handle-reset={this.handleResetOrder}
       >
-        <template slot='pack'>{this.getAllItems()}</template>
+        <template slot='unpack'>{this.unpackItems()}</template>
       </exact-search>
     )
   }
+
 }
 </script>
