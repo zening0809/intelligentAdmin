@@ -18,7 +18,7 @@
           type="primary"
           icon="el-icon-search"
           style="background:#4186f6"
-          @click="handleSearch()"
+          @click="handleSearch(query)"
         >查询</el-button>
         <el-button size="small" style="margin-left: 0" @click.stop="handleReset">重置</el-button>
       </div>

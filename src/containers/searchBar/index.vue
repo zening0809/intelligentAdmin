@@ -12,20 +12,17 @@ export default {
     this.query = _.cloneDeep(this.searchQuery)
   },
   methods: {
-    // 返回回调参数
-    selctBackHandle(key, value) {
-      console(key, value)
-    },
-    searchBack(key, value) {
-      console(key, value)
+    searchResetTemporary() {
+      this.query = _.cloneDeep(this.searchQuery)
+      this.searchReset()
     }
   },
   render() {
     return (
       <exact-search
         query={this.query}
-        handle-search={this.searchBack}
-        handle-reset={this.handleResetOrder}
+        handle-search={this.searchHandle}
+        handle-reset={this.searchResetTemporary}
       >
         <template slot='unpack'>{this.unpackItems()}</template>
       </exact-search>

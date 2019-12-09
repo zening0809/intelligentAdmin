@@ -1,6 +1,13 @@
 <template>
   <div>
-    <search-bar :fields="fields" :fields-arr="fieldsArr" :search-query="query" :form-items="formItems" />
+    <search-bar
+      :fields="fields"
+      :fields-arr="fieldsArr"
+      :search-query="query"
+      :form-items="formItems"
+      :search-handle="searchHandle"
+      :search-reset="searchHandle"
+    />
   </div>
 </template>
 <script>
@@ -28,6 +35,12 @@ export default {
     this.query = searchMap.query
     this.formItems = searchMap.formItems
   },
-  methods: {}
+  methods: {
+    searchHandle(query) {
+      console.log(query)
+    },
+    searchReset() {
+    }
+  }
 }
 </script>

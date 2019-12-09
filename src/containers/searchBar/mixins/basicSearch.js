@@ -32,6 +32,20 @@ export default {
       default() {
         return []
       }
+    },
+    searchHandle: {
+      type: Function,
+      default() {
+        return () => {
+        }
+      }
+    },
+    searchReset: {
+      type: Function,
+      default() {
+        return () => {
+        }
+      }
     }
   },
   data() {
