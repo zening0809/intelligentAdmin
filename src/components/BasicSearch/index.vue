@@ -9,12 +9,7 @@
           :label-width="labelWidth + 'px'"
           @submit.native.prevent
         >
-          <slot name="unpack" />
-          <!-- <br/></br> -->
-          <div style="display: block;width: 100%;">
-            <slot name="pack" />
-          </div>
-          <!--<a title="展开更多" class="toggle-more-btn" @click="toggleMore" v-if="rightArrCom.length !== 0"></a>-->
+          <slot name="pack" />
         </el-form>
       </div>
       <div class="basic-search__col-r">
