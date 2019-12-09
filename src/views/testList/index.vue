@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-form :inline="true" :model="query" class="demo-form-inline">
+    <!-- <el-form :inline="true" :model="query" class="demo-form-inline">
       <el-form-item label="用户">
         <el-input v-model="query.author" placeholder="请输入用户" />
       </el-form-item>
@@ -11,7 +11,8 @@
         <el-button type="primary" @click="onSubmit">查询</el-button>
         <el-button @click="handleReset">重置</el-button>
       </el-form-item>
-    </el-form>
+    </el-form> -->
+    <search-bar />
     <!-- 列表 -->
     <div class="control">
       <el-table
@@ -59,7 +60,11 @@
 </template>
 <script>
 import { testList } from '@/api/testList'
+import SearchBar from './exactSearch'
 export default {
+  components: {
+    SearchBar
+  },
   data() {
     return {
       formInline: {
@@ -92,7 +97,6 @@ export default {
   },
   methods: {
     async queryList(query = {}) {
-      console.log('query', query)
       await testList({ ...this.listQuery, ...query }).then(
         ({ code, content }) => {
           if (code === 1) {
@@ -105,7 +109,6 @@ export default {
       )
     },
     onSubmit() {
-      console.log(1)
       this.queryList(this.query)
     },
     handleReset() {
