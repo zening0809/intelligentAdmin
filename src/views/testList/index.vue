@@ -58,16 +58,19 @@
   </div>
 </template>
 <script>
-import { testList } from '@/api/testList'
+import store from './store'
+import { mapState } from 'vuex'
+import mixinStoe from '@/minxs/store'
 export default {
+  mixins: [mixinStoe],
   data() {
     return {
+      storeKey: 'testList',
       formInline: {
         user: '',
         region: ''
       },
       currentPage2: 1,
-      total: 0,
       fields: [
         { key: 'author', name: '用户' },
         { key: 'display_time', name: '创建时间' },
@@ -75,7 +78,6 @@ export default {
         { key: 'reviewer', name: '审核人' },
         { key: 'forecast', name: '预收金额' }
       ],
-      tableData: [],
       query: {
         author: undefined,
         reviewer: undefined
@@ -87,22 +89,23 @@ export default {
       multipleSelection: []
     }
   },
+  computed: {
+    ...mapState('testList', ['tableData', 'total'])
+  },
+  created() {
+    this.registStore(store)
+    /*
+      在主组件中 上来发送请求 ，
+      来获取当前登陆用户的 菜单权限
+    */
+  },
   mounted() {
     this.queryList()
   },
   methods: {
-    async queryList(query = {}) {
+    queryList(query = {}) {
+      this.dispatch('queryList')
       console.log('query', query)
-      await testList({ ...this.listQuery, ...query }).then(
-        ({ code, content }) => {
-          if (code === 1) {
-            this.tableData = content.rows
-            this.total = content.total
-          } else {
-            this.$message.error(content.message)
-          }
-        }
-      )
     },
     onSubmit() {
       console.log(1)
