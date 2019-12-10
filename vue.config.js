@@ -62,6 +62,9 @@ module.exports = {
   //   }
   // },
   configureWebpack: config => {
+    if (process.env.NODE_ENV === 'production') {
+      config.optimization.minimizer[0].options.terserOptions.compress.drop_console = true
+    }
     const plugins = [
       new LodashWebpackPlugin({
         shorthands: true,
@@ -74,7 +77,7 @@ module.exports = {
         // CNST: 'biz/constants',
         // req: 'biz/utils/req',
         // api: 'biz/services'
-      })
+      }),
     ]
     // if (NODE_ENV === 'production') {
     //   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin

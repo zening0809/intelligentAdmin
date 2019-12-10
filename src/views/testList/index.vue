@@ -59,7 +59,6 @@
   </div>
 </template>
 <script>
-import { testList } from '@/api/testList'
 import SearchBar from './exactSearch'
 import store from './store'
 import mixinStores from '@/minxs/store'
@@ -103,17 +102,8 @@ export default {
     this.queryList()
   },
   methods: {
-    async queryList(query = {}) {
-      await testList({ ...this.listQuery, ...query }).then(
-        ({ code, content }) => {
-          if (code === 1) {
-            this.tableData = content.rows
-            this.total = content.total
-          } else {
-            this.$message.error(content.message)
-          }
-        }
-      )
+    queryList(query = {}) {
+      this.dispatch('queryList')
     },
     onSubmit() {
       this.queryList(this.query)
