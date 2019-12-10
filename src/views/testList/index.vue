@@ -61,12 +61,16 @@
 <script>
 import { testList } from '@/api/testList'
 import SearchBar from './exactSearch'
+import store from './store'
+import mixinStores from '@/minxs/store'
 export default {
   components: {
     SearchBar
   },
+  mixins: [mixinStores],
   data() {
     return {
+      storeKey: 'testList',
       formInline: {
         user: '',
         region: ''
@@ -91,6 +95,9 @@ export default {
       },
       multipleSelection: []
     }
+  },
+  created() {
+    this.registStore(store)
   },
   mounted() {
     this.queryList()
