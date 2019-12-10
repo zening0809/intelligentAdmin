@@ -13,6 +13,7 @@ var http = require('http');
  */
 
 var port = normalizePort(process.env.PORT || '3000');
+console.log('来吧 打开吧😀——————————————->😏' , 'http://localhost:3000')
 app.set('port', port);
 
 /**
