@@ -1,13 +1,16 @@
 module.exports = {
   presets: [
     '@vue/app',
-    ['@babel/preset-env',      //添加 babel-preset-env 配置 
-      {
-        'modules': false
-      }
+    // 添加 babel-preset-env 配置
+    ['@babel/preset-env', {
+      'modules': false
+    }
     ]
   ],
-  plugins: [        // element官方教程
+  plugins: [
+    'lodash',
+    'jsx-v-model',
+    // element官方教程
     [
       'component',
       {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-form :inline="true" :model="query" class="demo-form-inline">
+    <!-- <el-form :inline="true" :model="query" class="demo-form-inline">
       <el-form-item label="用户">
         <el-input v-model="query.author" placeholder="请输入用户" />
       </el-form-item>
@@ -11,7 +11,8 @@
         <el-button type="primary" @click="onSubmit">查询</el-button>
         <el-button @click="handleReset">重置</el-button>
       </el-form-item>
-    </el-form>
+    </el-form> -->
+    <search-bar />
     <!-- 列表 -->
     <div class="control">
       <el-table
@@ -58,19 +59,20 @@
   </div>
 </template>
 <script>
-import store from './store'
-import { mapState } from 'vuex'
-import mixinStoe from '@/minxs/store'
+import { testList } from '@/api/testList'
+import SearchBar from './exactSearch'
 export default {
-  mixins: [mixinStoe],
+  components: {
+    SearchBar
+  },
   data() {
     return {
-      storeKey: 'testList',
       formInline: {
         user: '',
         region: ''
       },
       currentPage2: 1,
+      total: 0,
       fields: [
         { key: 'author', name: '用户' },
         { key: 'display_time', name: '创建时间' },
@@ -78,6 +80,7 @@ export default {
         { key: 'reviewer', name: '审核人' },
         { key: 'forecast', name: '预收金额' }
       ],
+      tableData: [],
       query: {
         author: undefined,
         reviewer: undefined
@@ -89,26 +92,23 @@ export default {
       multipleSelection: []
     }
   },
-  computed: {
-    ...mapState('testList', ['tableData', 'total'])
-  },
-  created() {
-    this.registStore(store)
-    /*
-      在主组件中 上来发送请求 ，
-      来获取当前登陆用户的 菜单权限
-    */
-  },
   mounted() {
     this.queryList()
   },
   methods: {
-    queryList(query = {}) {
-      this.dispatch('queryList')
-      console.log('query', query)
+    async queryList(query = {}) {
+      await testList({ ...this.listQuery, ...query }).then(
+        ({ code, content }) => {
+          if (code === 1) {
+            this.tableData = content.rows
+            this.total = content.total
+          } else {
+            this.$message.error(content.message)
+          }
+        }
+      )
     },
     onSubmit() {
-      console.log(1)
       this.queryList(this.query)
     },
     handleReset() {

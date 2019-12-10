@@ -1,6 +1,8 @@
 'use strict'
 const path = require('path')
 const defaultSettings = require('./src/settings.js')
+const LodashWebpackPlugin = require('lodash-webpack-plugin')
+const webpack = require('webpack')
 
 function resolve(dir) {
   return path.join(__dirname, dir)
@@ -49,15 +51,52 @@ module.exports = {
     },
     after: require('./mock/mock-server.js')
   },
-  configureWebpack: {
-    // provide the app's title in webpack's name field, so that
-    // it can be accessed in index.html to inject the correct title.
-    name: name,
-    resolve: {
-      alias: {
-        '@': resolve('src')
-      }
-    }
+  // configureWebpack: {
+  //   // provide the app's title in webpack's name field, so that
+  //   // it can be accessed in index.html to inject the correct title.
+  //   name: name,
+  //   resolve: {
+  //     alias: {
+  //       '@': resolve('src')
+  //     }
+  //   }
+  // },
+  configureWebpack: config => {
+    const plugins = [
+      new LodashWebpackPlugin({
+        shorthands: true,
+        cloning: true,
+        paths: true
+      }),
+      new webpack.ProvidePlugin({
+        _: '@/utils/lodash'
+        // jt: 'common/utils/jt',
+        // CNST: 'biz/constants',
+        // req: 'biz/utils/req',
+        // api: 'biz/services'
+      })
+    ]
+    // if (NODE_ENV === 'production') {
+    //   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+    //   plugins.push(new BundleAnalyzerPlugin())
+
+    //   // 开启gzip压缩
+    //   const CompressionWebpackPlugin = require('compression-webpack-plugin')
+    //   const productionGzipExtensions = ['js', 'css']
+    //   plugins.push(new CompressionWebpackPlugin({
+    //     algorithm: 'gzip',
+    //     test: new RegExp('\\.(' + productionGzipExtensions.join('|') + ')$'),
+    //     threshold: 10240,
+    //     minRatio: 0.8
+    //   }))
+    // }
+    return { plugins, name: name,
+      resolve: {
+        alias: {
+          '@': resolve('src'),
+          '@container': resolve('src/containers')
+        }
+      }}
   },
   chainWebpack(config) {
     config.plugins.delete('preload') // TODO: need test
@@ -104,7 +143,7 @@ module.exports = {
             .plugin('ScriptExtHtmlWebpackPlugin')
             .after('html')
             .use('script-ext-html-webpack-plugin', [{
-            // `runtime` must same as runtimeChunk name. default is `runtime`
+              // `runtime` must same as runtimeChunk name. default is `runtime`
               inline: /runtime\..*\.js$/
             }])
             .end()
