@@ -99,10 +99,10 @@ export default {
   },
   mounted() {
     this.queryList()
-    // api.testList.bbbbbb()
+    api.testList.bbbbbb()
   },
   computed: {
-    ...mapState('tableData', 'total')
+    ...mapState('testList', ['tableData', 'total'])
   },
   methods: {
     queryList(query = {}) {

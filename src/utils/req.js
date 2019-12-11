@@ -52,7 +52,7 @@ export function generate(config) {
       catchPendings[key] = true
       return axios(
         Object.assign({
-          url: (item.prefix || config.prefix || '') + item.url,
+          url: process.env.VUE_APP_BASE_API + (item.prefix || config.prefix || '') + item.url,
           transformRequest: function(data, headers) {
             if (item.cType === 3) {
               return qs.stringify(data)
