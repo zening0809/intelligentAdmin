@@ -106,7 +106,7 @@ export default {
   },
   methods: {
     queryList(query = {}) {
-      this.dispatch('queryTest', {})
+      this.dispatch('queryTest', { data: { page: this.listQuery.page, limit: this.listQuery.limit }})
     },
     onSubmit() {
       this.queryList(this.query)

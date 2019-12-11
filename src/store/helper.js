@@ -187,14 +187,14 @@ export function generateActions(config) {
           success,
           error,
           berforeUpdate,
-          options
+          options,
+          data
         }) {
-          console.log(item.caller, 'caller--------------')
           try {
             const {
               code,
               content
-            } = await (item.caller || config.caller)[item.callee](entity, options)
+            } = await (item.caller || config.caller)[item.callee](data, entity, options)
             if (code === 1) {
               if (item.mutation) {
                 berforeUpdate && berforeUpdate(content)
