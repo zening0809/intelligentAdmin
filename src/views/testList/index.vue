@@ -94,19 +94,19 @@ export default {
       multipleSelection: []
     }
   },
+  computed: {
+    ...mapState('testList', ['tableData', 'total'])
+  },
   created() {
     this.registStore(store)
   },
   mounted() {
     this.queryList()
-    api.testList.bbbbbb()
-  },
-  computed: {
-    ...mapState('testList', ['tableData', 'total'])
+    // api.testList.bbbbbb()
   },
   methods: {
     queryList(query = {}) {
-      this.dispatch('queryList')
+      this.dispatch('queryTest', {})
     },
     onSubmit() {
       this.queryList(this.query)
