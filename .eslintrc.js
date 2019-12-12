@@ -11,7 +11,9 @@ module.exports = {
   },
   extends: ['plugin:vue/recommended', 'eslint:recommended'],
   globals: {
-    _: true
+    _: true,
+    api: true,
+    req: true
   }
   ,
   // add your custom rules here

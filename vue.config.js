@@ -49,6 +49,15 @@ module.exports = {
         }
       }
     },
+  //   proxy: {
+  //     '/api': {
+  //         target: `http://127.0.0.1:${port}/mock`,
+  //         changeOrigin: true,
+  //         pathRewrite: {
+  //             '^/api': '/api'
+  //         }
+  //     }
+  // },
     after: require('./mock/mock-server.js')
   },
   // configureWebpack: {
@@ -72,11 +81,11 @@ module.exports = {
         paths: true
       }),
       new webpack.ProvidePlugin({
-        _: '@/utils/lodash'
+        _: '@/utils/lodash',
+        api: '@/services',
         // jt: 'common/utils/jt',
         // CNST: 'biz/constants',
-        // req: 'biz/utils/req',
-        // api: 'biz/services'
+        req: '@/utils/req'
       }),
     ]
     // if (NODE_ENV === 'production') {

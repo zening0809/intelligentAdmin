@@ -1,45 +1,27 @@
-import {
-  testList
-} from '@/api/testList'
-const state = {
+import { pageListMerge, generateActions } from '@/store/helper'
+
+// 默认状态
+const DEFAULTS = {
   tableData: [],
   total: 0
 }
 
-const mutations = {
-  QUERYLIST: (state, content) => {
-    state.tableData = content.rows
-    state.total = content.total
-  }
-}
-
-const actions = {
-  async queryList({
-    commit
-  }, paylod) {
-    console.log(123)
-    await testList({
-      ...paylod
-    }).then(
-      ({
-        code,
-        content
-      }) => {
-        if (code === 1) {
-          // this.tableData = content.rows
-          // this.total = content.total
-          commit('QUERYLIST', content)
-        } else {
-          this.$message.error(content.message)
-        }
-      }
-    )
-  }
-}
-
-export default {
+export default pageListMerge({
   namespaced: true,
-  state,
-  mutations,
-  actions
-}
+  actions: {
+    ...generateActions({
+      caller: api.testList,
+      items: [
+        // 列表查询
+        { key: 'queryTest', callee: 'bbbbbb', mutation: 'testList' }
+      ]
+    })
+  },
+  mutations: {
+    testList(state, content) {
+      console.log(content, 'content-------------------------')
+      state.tableData = content.rows
+      state.total = content.total
+    }
+  }
+}, DEFAULTS)

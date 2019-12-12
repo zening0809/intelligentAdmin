@@ -62,6 +62,7 @@
 import SearchBar from './exactSearch'
 import store from './store'
 import mixinStores from '@/minxs/store'
+import { mapState } from 'vuex'
 export default {
   components: {
     SearchBar
@@ -75,7 +76,6 @@ export default {
         region: ''
       },
       currentPage2: 1,
-      total: 0,
       fields: [
         { key: 'author', name: '用户' },
         { key: 'display_time', name: '创建时间' },
@@ -83,7 +83,6 @@ export default {
         { key: 'reviewer', name: '审核人' },
         { key: 'forecast', name: '预收金额' }
       ],
-      tableData: [],
       query: {
         author: undefined,
         reviewer: undefined
@@ -95,15 +94,19 @@ export default {
       multipleSelection: []
     }
   },
+  computed: {
+    ...mapState('testList', ['tableData', 'total'])
+  },
   created() {
     this.registStore(store)
   },
   mounted() {
     this.queryList()
+    // api.testList.bbbbbb()
   },
   methods: {
     queryList(query = {}) {
-      this.dispatch('queryList')
+      this.dispatch('queryTest', { data: { page: this.listQuery.page, limit: this.listQuery.limit }})
     },
     onSubmit() {
       this.queryList(this.query)
