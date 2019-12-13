@@ -18,10 +18,5 @@ export default pageListMerge({
     })
   },
   mutations: {
-    testList(state, content) {
-      // console.log(content, 'content-------------------------')
-      state.tableData = content.rows
-      state.total = content.total
-    }
   }
 }, DEFAULTS)

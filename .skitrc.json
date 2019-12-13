@@ -1,5 +1,11 @@
 {
   "name": "navigator",
+  "menu": {
+    "path": "/navigator/index",
+    "name": "navigator",
+    "title": "导航",
+    "icon": "tab" 
+  },
   "containers": {
     "searchBar": [
       {

@@ -1,17 +1,5 @@
 <template>
   <div>
-    <!-- <el-form :inline="true" :model="query" class="demo-form-inline">
-      <el-form-item label="用户">
-        <el-input v-model="query.author" placeholder="请输入用户" />
-      </el-form-item>
-      <el-form-item label="审核人">
-        <el-input v-model="query.reviewer" placeholder="请输入审核人" />
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="onSubmit">查询</el-button>
-        <el-button @click="handleReset">重置</el-button>
-      </el-form-item>
-    </el-form> -->
     <search-bar />
     <!-- 列表 -->
     <div class="control">
@@ -133,11 +121,11 @@ export default {
       // console.log('this.selecTestContent', this.selectTestContent)
     },
     handleSelectionChange(val) {
-      console.log(val)
+      // console.log(val)
       this.multipleSelection = val
     },
     handleFunction1(data) {
-      console.log(data, 'data')
+      // console.log(data, 'data')
     }
   }
 }

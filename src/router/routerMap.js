@@ -1,9 +1,7 @@
 import Layout from '@/layout'
 import views from './views'
 const menuData = []
-console.log(views)
 views.map(item => {
-  console.log(item)
   menuData.push({
     path: item.path,
     component: Layout,
