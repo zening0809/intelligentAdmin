@@ -49,15 +49,6 @@ module.exports = {
         }
       }
     },
-  //   proxy: {
-  //     '/api': {
-  //         target: `http://127.0.0.1:${port}/mock`,
-  //         changeOrigin: true,
-  //         pathRewrite: {
-  //             '^/api': '/api'
-  //         }
-  //     }
-  // },
     after: require('./mock/mock-server.js')
   },
   // configureWebpack: {
@@ -86,7 +77,7 @@ module.exports = {
         // jt: 'common/utils/jt',
         // CNST: 'biz/constants',
         req: '@/utils/req'
-      }),
+      })
     ]
     // if (NODE_ENV === 'production') {
     //   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin

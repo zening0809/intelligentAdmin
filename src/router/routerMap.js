@@ -10,7 +10,7 @@ views.map(item => {
     children: [
       {
         path: 'index',
-        component: () => import(item.component),
+        component: () => item.component,
         name: item.name,
         meta: { title: item.title, icon: item.icon }
       }
