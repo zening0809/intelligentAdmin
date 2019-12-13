@@ -14,7 +14,7 @@
         "label": "test2",
         "show": true,
         "span": 1,
-        "defValue": "intellent",
+        "defValue": {"value": "intellent"},
         "placeholder": "请输入",
         "props": {
           "size": "mini"
@@ -26,7 +26,7 @@
         "label": "收货客户",
         "show": true,
         "span": 1,
-        "defValue": "intellent",
+        "defValue": {"value": "intellent"},
         "placeholder": "请输入",
         "props": {
           "size": "mini"
