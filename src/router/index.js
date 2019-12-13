@@ -6,7 +6,7 @@ Vue.use(Router)
 /* Layout */
 import Layout from '@/layout'
 
-export const constantRoutes = [
+const staticRoutes = [
   {
     path: '/login',
     component: () => import('@/views/login/index'),
@@ -36,28 +36,15 @@ export const constantRoutes = [
         meta: { title: 'testList', icon: 'tab' }
       }
     ]
-  },
-  {
-    path: '/master',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/testList/index'),
-        name: 'master',
-        meta: { title: 'testList', icon: 'tab' }
-      }
-    ]
   }
 ]
-console.log(routerMap)
-const routerList = [...constantRoutes, ...routerMap]
-console.log(routerList)
+
+export const constantRoutes = [...staticRoutes, ...routerMap]
 
 const createRouter = () => new Router({
   // mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }),
-  routes: routerList
+  routes: constantRoutes
 })
 const router = createRouter()
 // Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465

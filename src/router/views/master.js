@@ -1,13 +1,13 @@
 export default [
   {
-    path: '/master',
+    path: '/skiude',
     component: '@/views/testList/index',
     name: '侧边栏1',
     title: 'master1',
     icon: 'tab'
   },
   {
-    path: '/master2',
+    path: '/adaa',
     component: '@/views/testList/index',
     name: '侧边栏2',
     title: 'master2',
