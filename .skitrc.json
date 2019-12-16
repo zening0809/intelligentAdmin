@@ -14,7 +14,7 @@
         "label": "test2",
         "show": true,
         "span": 1,
-        "defValue": {"value": "intellent"},
+        "defValue": {"value": "aaa"},
         "placeholder": "请输入",
         "props": {
           "size": "mini"
@@ -22,14 +22,52 @@
       },
       {
         "type": "input",
-        "key": "customerName2",
-        "label": "收货客户",
+        "key": "customerName",
+        "label": "bbb",
         "show": true,
         "span": 1,
-        "defValue": {"value": "intellent"},
+        "defValue": {"value": "aaa"},
         "placeholder": "请输入",
         "props": {
           "size": "mini"
+        }
+      },
+      {
+        "type": "input",
+        "key": "ccc",
+        "label": "test2",
+        "show": true,
+        "span": 1,
+        "defValue": {"value": "aaa"},
+        "placeholder": "请输入",
+        "props": {
+          "size": "mini"
+        }
+      },
+      {
+        "type": "select",
+        "key": "orderSource",
+        "label": "渠道",
+        "needQuery": false,
+        "defValue": {"value": ""},
+        "span": 1,
+        "dataList": [
+          {
+            "value": "",
+            "label": "请选择"
+          },
+          {
+            "value": 0,
+            "label": "上游下发"
+          },
+          {
+            "value": 1,
+            "label": "手工创建"
+          }
+        ],
+        "props": {
+          "size": "mini",
+          "placeholder": "请选择"
         }
       }
     ]
