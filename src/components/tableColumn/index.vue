@@ -1,7 +1,10 @@
 <script>
 export default {
   props: {
-    index: Number,
+    index: {
+      type: Number,
+      default: 1
+    },
     row: {
       type: Object,
       default() {

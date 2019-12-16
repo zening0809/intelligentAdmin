@@ -50,7 +50,7 @@
           <el-radio v-model="radioIndex" :label="scope.$index">&nbsp;</el-radio>
         </template>
       </el-table-column>
-      <!-- <el-table-column
+      <el-table-column
         align="center"
         type="index"
         :width="indexColWidth"
@@ -58,7 +58,7 @@
         :label="indexColLabel"
         :index="getIndex"
         v-if="showIndexCol"
-      /> -->
+      />
       <el-table-column
         v-if="showActionCol"
         align="center"
@@ -133,7 +133,7 @@ export default {
     },
     tableH: {
       type: Number,
-      default: 1080
+      default: 750
     },
     // 表格唯一code码
     tableCode: {
@@ -185,7 +185,7 @@ export default {
     // 操作列宽度
     actionColWidth: {
       type: Number,
-      default: 100
+      default: 250
     },
     // 操作列Label
     actionColLabel: {
@@ -310,7 +310,7 @@ export default {
   },
   methods: {
     getIndex(index) {
-      return this.pageIndex * this.pageSize + index
+      return (this.pageIndex - 1) * this.pageSize + index
     },
     rowClick(row, col) {
       if (col && col.className === 'edit-col') {

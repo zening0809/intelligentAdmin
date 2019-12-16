@@ -15,7 +15,7 @@ export default {
   render() {
     return (<div>{
       this.formItems.map(item => {
-        return ((<el-button type='primary'
+        return ((<el-button type={item.btype}
           size = 'small' > {item.name} </el-button>))
       })} </div>
     )
