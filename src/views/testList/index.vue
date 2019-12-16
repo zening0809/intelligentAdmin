@@ -2,7 +2,8 @@
   <div>
     <search-bar />
     <!-- 列表 -->
-    <div class="control">
+    <Tbale-list :state="state" />
+    <!-- <div class="control">
       <el-table
         ref="handSelectTest_multipleTable"
         :data="tableData"
@@ -31,9 +32,9 @@
           />
         </el-table-column>
       </el-table>
-    </div>
+    </div>-->
     <!-- 分页 -->
-    <div class="block">
+    <!-- <div class="block">
       <el-pagination
         :current-page.sync="currentPage2"
         :page-sizes="[10, 20]"
@@ -43,19 +44,21 @@
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
       />
-    </div>
+    </div>-->
   </div>
 </template>
 <script>
 import SearchBar from './exactSearch'
+import TbaleList from './exactList'
 import store from './store'
 import mixinStores from '@/minxs/store'
-import { mapState } from 'vuex'
+import pageList from '@/minxs/pageList'
 export default {
   components: {
-    SearchBar
+    SearchBar,
+    TbaleList
   },
-  mixins: [mixinStores],
+  mixins: [mixinStores, pageList],
   data() {
     return {
       storeKey: 'testList',
@@ -83,7 +86,7 @@ export default {
     }
   },
   computed: {
-    ...mapState('testList', ['tableData', 'total'])
+    // ...mapState('testList', ['tableData', 'total'])
   },
   created() {
     this.registStore(store)
@@ -94,39 +97,37 @@ export default {
   },
   methods: {
     queryList(query = {}) {
-      this.dispatch('queryTest', { data: { page: this.listQuery.page, limit: this.listQuery.limit }})
-    },
-    onSubmit() {
-      this.queryList(this.query)
-    },
-    handleReset() {
-      this.listQuery.page = 1
-      this.currentPage2 = 1
-      this.queryList()
-    },
-    handleSizeChange(val) {
-      //   console.log(`每页 ${val} 条`)
-      this.listQuery.limit = val
-      this.listQuery.page = 1
-      this.currentPage2 = 1
-      this.queryList()
-    },
-    handleCurrentChange(val) {
-      //   console.log(`当前页: ${val}`)
-      this.listQuery.page = val
-      this.queryList()
-    },
-    handleRowClick(row, column, event) {
-      this.$refs.handSelectTest_multipleTable.toggleRowSelection(row)
-      // console.log('this.selecTestContent', this.selectTestContent)
-    },
-    handleSelectionChange(val) {
-      // console.log(val)
-      this.multipleSelection = val
-    },
-    handleFunction1(data) {
-      // console.log(data, 'data')
+      this.dispatch('queryTest', {
+        data: { page: this.listQuery.page, limit: this.listQuery.limit }
+      })
     }
+    // onSubmit() {
+    //   this.queryList(this.query)
+    // },
+    // handleReset() {
+    //   this.listQuery.page = 1
+    //   this.currentPage2 = 1
+    //   this.queryList()
+    // },
+    // handleSizeChange(val) {
+    //   //   console.log(`每页 ${val} 条`)
+    //   this.listQuery.limit = val
+    //   this.listQuery.page = 1
+    //   this.currentPage2 = 1
+    //   this.queryList()
+    // },
+    // handleCurrentChange(val) {
+    //   //   console.log(`当前页: ${val}`)
+    //   this.listQuery.page = val
+    //   this.queryList()
+    // },
+    // handleRowClick(row, column, event) {
+    //   this.$refs.handSelectTest_multipleTable.toggleRowSelection(row)
+    // },
+    // handleSelectionChange(val) {
+    //   this.multipleSelection = val
+    // },
+    // handleFunction1(data) {}
   }
 }
 </script>
