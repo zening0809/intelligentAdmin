@@ -133,7 +133,7 @@ export default {
     },
     tableH: {
       type: Number,
-      default: 0
+      default: 1080
     },
     // 表格唯一code码
     tableCode: {
