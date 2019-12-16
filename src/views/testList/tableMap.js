@@ -18,17 +18,20 @@ const tableMap = {
   'formItems': [{
     'type': 'button',
     'name': '功能1',
-    'btype': 'success'
+    'btype': 'success',
+    'icon': 'el-icon-check'
   },
   {
     'type': 'button',
     'name': '功能2',
-    'btype': 'primary'
+    'btype': 'primary',
+    'icon': 'el-icon-star-off'
   },
   {
     'type': 'button',
     'name': '功能3',
-    'btype': 'danger'
+    'btype': 'danger',
+    'icon': 'el-icon-delete'
   }],
   'selectType': 'multiple',
   // multiple 控制单选多选
@@ -40,14 +43,21 @@ const tableMap = {
   // 操作后面的字段名字
   'actionBtn': [
     {
+      'type': 'a',
+      'name': '小链接',
+      'icon': 'el-icon-delete'
+    },
+    {
       'type': 'btn',
-      'name': '点击大按钮',
-      'btype': 'danger'
+      'name': '大按钮',
+      'btype': 'danger',
+      'icon': 'el-icon-check'
     },
     // 操作的组件，可以是btn 可以是a
     {
       'type': 'a',
-      'name': '大链接'
+      'name': '大链接',
+      'icon': 'el-icon-delete'
     }
     // 操作的组件可以是btn可以是a
   ],
