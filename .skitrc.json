@@ -1,0 +1,60 @@
+{
+  "name": "navigator",
+  "menu": {
+    "path": "/navigator/index",
+    "name": "navigator",
+    "title": "导航",
+    "icon": "tab" 
+  },
+  "containers": {
+    "searchBar": [
+      {
+        "type": "input",
+        "key": "customerName",
+        "label": "test2",
+        "show": true,
+        "span": 1,
+        "defValue": {"value": "intellent"},
+        "placeholder": "请输入",
+        "props": {
+          "size": "mini"
+        }
+      },
+      {
+        "type": "input",
+        "key": "customerName2",
+        "label": "收货客户",
+        "show": true,
+        "span": 1,
+        "defValue": {"value": "intellent"},
+        "placeholder": "请输入",
+        "props": {
+          "size": "mini"
+        }
+      }
+    ]
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
