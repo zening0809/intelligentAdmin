@@ -93,7 +93,6 @@ export default {
   },
   mounted() {
     this.queryList()
-    console.log(this.state, '2222222')
     // api.testList.bbbbbb()
   },
   methods: {
@@ -101,34 +100,34 @@ export default {
       this.dispatch('queryTest', {
         data: { page: this.listQuery.page, limit: this.listQuery.limit }
       })
-    },
-    onSubmit() {
-      this.queryList(this.query)
-    },
-    handleReset() {
-      this.listQuery.page = 1
-      this.currentPage2 = 1
-      this.queryList()
-    },
-    handleSizeChange(val) {
-      //   console.log(`每页 ${val} 条`)
-      this.listQuery.limit = val
-      this.listQuery.page = 1
-      this.currentPage2 = 1
-      this.queryList()
-    },
-    handleCurrentChange(val) {
-      //   console.log(`当前页: ${val}`)
-      this.listQuery.page = val
-      this.queryList()
-    },
-    handleRowClick(row, column, event) {
-      this.$refs.handSelectTest_multipleTable.toggleRowSelection(row)
-    },
-    handleSelectionChange(val) {
-      this.multipleSelection = val
-    },
-    handleFunction1(data) {}
+    }
+    // onSubmit() {
+    //   this.queryList(this.query)
+    // },
+    // handleReset() {
+    //   this.listQuery.page = 1
+    //   this.currentPage2 = 1
+    //   this.queryList()
+    // },
+    // handleSizeChange(val) {
+    //   //   console.log(`每页 ${val} 条`)
+    //   this.listQuery.limit = val
+    //   this.listQuery.page = 1
+    //   this.currentPage2 = 1
+    //   this.queryList()
+    // },
+    // handleCurrentChange(val) {
+    //   //   console.log(`当前页: ${val}`)
+    //   this.listQuery.page = val
+    //   this.queryList()
+    // },
+    // handleRowClick(row, column, event) {
+    //   this.$refs.handSelectTest_multipleTable.toggleRowSelection(row)
+    // },
+    // handleSelectionChange(val) {
+    //   this.multipleSelection = val
+    // },
+    // handleFunction1(data) {}
   }
 }
 </script>

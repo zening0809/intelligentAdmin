@@ -137,7 +137,6 @@ export default {
             break
         }
       })
-      console.log(allItems)
       return allItems
     },
     packItems() {

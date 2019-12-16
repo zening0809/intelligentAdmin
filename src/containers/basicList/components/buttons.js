@@ -11,7 +11,6 @@ export default {
     }
   },
   mounted() {
-    console.log(this.formItems, '@@@@@@@@@@')
   },
   render() {
     return (<div>{
