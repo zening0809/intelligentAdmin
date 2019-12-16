@@ -1,6 +1,11 @@
 const tableMap = {
   'fieldsArr': [{
     'key': 'author',
+    'name': 'test',
+    'show': true
+  },
+  {
+    'key': 'author2',
     'name': 'test2',
     'show': true
   },
