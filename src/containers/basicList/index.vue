@@ -85,7 +85,7 @@ export default {
             switch (item.type) {
               case 'btn':
                 return (
-                  <el-button type={item.btype} size='small'>
+                  <el-button type={item.btype} size='small' icon={item.icon}>
                     {item.name}
                   </el-button>
                 )
