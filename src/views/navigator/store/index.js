@@ -1,4 +1,5 @@
 import { pageListMerge, generateActions } from '@/store/helper'
+import actionMap from './actionMap'
 
 const DEFAULTS = {
 }
@@ -6,12 +7,7 @@ const DEFAULTS = {
 export default pageListMerge({
   namespaced: true,
   actions: {
-    ...generateActions({
-      caller: api.navigator,
-      items: [
-        { key: 'queryList', callee: 'bbbb' }
-      ]
-    })
+    ...generateActions(actionMap)
   },
   mutations: {
   }

@@ -24,18 +24,6 @@ const staticRoutes = [
         meta: { title: 'dashboard', icon: 'dashboard', affix: true }
       }
     ]
-  },
-  {
-    path: '/testList',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/testList/index'),
-        name: 'testList',
-        meta: { title: 'testList', icon: 'tab' }
-      }
-    ]
   }
 ]
 

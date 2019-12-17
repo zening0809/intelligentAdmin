@@ -53,6 +53,9 @@ export default {
   created() {
   },
   mounted() {
+    if (tableMap.immediateQuery) {
+      this.dispatch('queryList')
+    }
   },
   methods: {
     pageindexfun(val) {

@@ -92,6 +92,7 @@
           "btype": "danger"
         }
       ],
+      "immediateQuery": true,
       "selectType": "multiple",
       "showActionCol": true,
       "showIndexCol": true,
@@ -107,5 +108,15 @@
         }
       ]
     }
+  },
+  "feature": {
+    "config": {
+      "prefix": "hahahahhahahhaha",
+      "items": [
+        { "key": "queryList", "callee": "bbbb", "url": "/aaaa" }
+      ]
+    }
   }
 }
+
+

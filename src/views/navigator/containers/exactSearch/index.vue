@@ -19,12 +19,14 @@ export default {
     SearchBar
   },
   props: {
-    queryList: {
+    dispatch: {
       type: Function,
       default: () => {}
     },
-    dispatch: Function,
-    updateState: Function
+    updateState: {
+      type: Function,
+      default: () => {}
+    }
   },
   data() {
     return {
@@ -45,12 +47,8 @@ export default {
   },
   methods: {
     searchHandle(query) {
-      // for (const key in this.query) {
-      //   this.query[key] = this.query[key] ? this.query[key].value : undefined
-      // }
-      // this.queryList(this.query)
-      this.updateState({ query, pageIndex: 0, loading: true })
-      this.dispatch('queryList', { query })
+      this.updateState({ query, pageIndex: 0 })
+      this.dispatch('queryList')
     },
     searchReset() {
     }
