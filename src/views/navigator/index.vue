@@ -2,7 +2,7 @@
   <div>
     <search-bar :dispatch="dispatch" :update-state="updateState" />
     <!-- 列表 -->
-    <Tbale-list :state="state" />
+    <Tbale-list :state="state" :dispatch="dispatch" />
   </div>
 </template>
 <script>

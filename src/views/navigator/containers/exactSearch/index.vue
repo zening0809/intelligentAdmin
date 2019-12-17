@@ -19,8 +19,14 @@ export default {
     SearchBar
   },
   props: {
-    dispatch: Function,
-    updateState: Function
+    dispatch: {
+      type: Function,
+      default: () => {}
+    },
+    updateState: {
+      type: Function,
+      default: () => {}
+    }
   },
   data() {
     return {
@@ -41,9 +47,8 @@ export default {
   },
   methods: {
     searchHandle(query) {
-      console.log(query)
       this.updateState({ query, pageIndex: 0 })
-      this.dispatch('queryList', { query })
+      this.dispatch('queryList')
     },
     searchReset() {
     }
