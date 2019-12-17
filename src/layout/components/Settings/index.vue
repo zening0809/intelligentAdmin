@@ -13,7 +13,7 @@
         <el-switch v-model="tagsView" class="drawer-switch" />
       </div>
 
-      <div class="drawer-item">
+      <div v-if="Setting.HeaderShow" class="drawer-item">
         <span>{{ $t('settings.fixedHeader') }}</span>
         <el-switch v-model="fixedHeader" class="drawer-switch" />
       </div>
@@ -36,11 +36,14 @@
 
 <script>
 import ThemePicker from '@/components/ThemePicker'
+import Setting from '../../setting'
 
 export default {
   components: { ThemePicker },
   data() {
-    return {}
+    return {
+      Setting
+    }
   },
   computed: {
     isShowJob() {

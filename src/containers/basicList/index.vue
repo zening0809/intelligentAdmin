@@ -6,6 +6,7 @@
     :table-h="tableH"
     :page-index="pageIndex"
     :page-size="pageSize"
+    :loading="loading"
     :page-index-change="pageIndexChange"
     :page-size-change="pageSizeChange"
     :show-index-col="showIndexCol"
@@ -72,6 +73,10 @@ export default {
     actionBtn: {
       type: Array,
       default: () => []
+    },
+    loading: {
+      type: Boolean,
+      default: false
     }
   },
   data() {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <search-bar :dispatch="dispatch" :update-state="updateState" />
+    <search-bar :query-list="queryList" :dispatch="dispatch" :update-state="updateState" />
     <!-- 列表 -->
     <Tbale-list :state="state" :dispatch="dispatch" />
   </div>
@@ -38,11 +38,11 @@ export default {
     // this.queryList();
   },
   methods: {
-    // queryList(query = {}) {
-    //   this.dispatch("queryList", {
-    //     data: { page: this.state.page, limit: this.state.limit }
-    //   });
-    // }
+    queryList(query = {}) {
+      this.dispatch('queryTest', {
+        data: { page: this.listQuery.page, limit: this.listQuery.limit, ...query }
+      })
+    }
   }
 }
 </script>
