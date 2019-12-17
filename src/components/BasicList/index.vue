@@ -51,13 +51,13 @@
         </template>
       </el-table-column>
       <el-table-column
+        v-if="showIndexCol"
         align="center"
         type="index"
         :width="indexColWidth"
         fixed="left"
         :label="indexColLabel"
         :index="getIndex"
-        v-if="showIndexCol"
       />
       <el-table-column
         v-if="showActionCol"

@@ -17,9 +17,9 @@ export default {
       this.formItems.map(item => {
         console.log(item)
         return ((<el-button type={item.btype}
-          size = 'small' 
+          size = 'small'
           icon={item.icon}
-          > {item.name}</el-button>))
+        > {item.name}</el-button>))
       })} </div>
     )
   }
