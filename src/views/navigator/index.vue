@@ -36,6 +36,7 @@ export default {
   },
   mounted() {
     // this.queryList();
+    // console.log(this.$store.state, 'this.$store.state')
   },
   methods: {
     queryList(query = {}) {
