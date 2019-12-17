@@ -7,6 +7,8 @@
       :page-size="state.pageSize"
       :page-index="state.pageIndex"
       :loading="state.loading"
+      :pageindexfun="pageindexfun"
+      :pagesizefun="pagesizefun"
     />
   </div>
 </template>
@@ -14,6 +16,7 @@
 import TableBar from '@container/basicList'
 import ExactList from '@/minxs/exactList'
 import tableMap from './tableMap.json'
+import { mapState } from 'vuex'
 export default {
   components: {
     TableBar
@@ -22,6 +25,14 @@ export default {
   props: {
     state: {
       type: Object,
+      default: () => {}
+    },
+    updateState: {
+      type: Function,
+      default: () => {}
+    },
+    dispatch: {
+      type: Function,
       default: () => {}
     }
   },
@@ -32,8 +43,10 @@ export default {
     return {
       fields: tableMap.fieldsArr,
       fieldsArr: [],
-      query: {}
     }
+  },
+  computed: {
+    ...mapState('navigator', ['query'])
   },
   watch: {},
   beforeCreate() {},
@@ -41,6 +54,15 @@ export default {
   },
   mounted() {
   },
-  methods: {}
+  methods: {
+    pageindexfun(val) {
+      this.updateState({ query:this.query, pageIndex: val, loading: true })
+      this.dispatch('queryList', { query:this.query })
+    },
+    pagesizefun(val) {
+      this.updateState({ query:this.query, pageIndex: 0, size:val, loading: true })
+      this.dispatch('queryList', { query:this.query })
+    }
+  }
 }
 </script>

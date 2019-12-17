@@ -7,8 +7,8 @@
     :page-index="pageIndex"
     :page-size="pageSize"
     :loading="loading"
-    :page-index-change="pageIndexChange"
-    :page-size-change="pageSizeChange"
+    :page-index-change="pageindexfun"
+    :page-size-change="pagesizefun"
     :show-index-col="showIndexCol"
     :action-col-label="actionColLabel"
     :select-type="isSingle"
@@ -77,6 +77,14 @@ export default {
     loading: {
       type: Boolean,
       default: false
+    },
+    pageindexfun: {
+      type: Function,
+      default: () => {}
+    },
+    pagesizefun: {
+      type: Function,
+      default: () => {}
     }
   },
   data() {

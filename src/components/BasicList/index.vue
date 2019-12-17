@@ -6,7 +6,7 @@
       </div>
       <div class="basic-list__hd-col--r f-fr">
         <el-pagination
-          v-if="showPage && list.length"
+          v-if="showPage && list.length && pagination && pagePosition === 'up'"
           :current-page="pageIndex"
           :page-size="pageSize"
           :page-sizes="pageSizes"
@@ -110,13 +110,34 @@
             />
           </template>
         </el-table-column>
+        
       </template>
     </el-table>
+     <div class="basic-list__hd-col--r f-fr setRight">
+        <el-pagination
+          v-if="showPage && list.length && pagination && pagePosition === 'up'"
+          :current-page="pageIndex"
+          :page-size="pageSize"
+          :page-sizes="pageSizes"
+          :total="total"
+          layout="total, sizes, prev, jumper, slot, next "
+          @current-change="pageIndexChange"
+          @size-change="pageSizeChange"
+        >
+          <span class="page-count">/ {{ pageCount }} </span>
+        </el-pagination>
+        <a
+          v-if="showColSet"
+          class="el-icon-setting basic-list__field-set-btn"
+          @click="updateColSetDlgVis(true)"
+        />
+      </div>
   </div>
 </template>
 
 <script>
 import TableColumn from '@/components/tableColumn'
+import tableMap from '../../views/testList/tableMap'
 
 const DEFAULTS = {
   radioIndex: null
@@ -285,7 +306,9 @@ export default {
       // 显示的列字段
       colFields: this.fields,
       // 列设置是否已经保存过
-      colSetSaved: false
+      colSetSaved: false,
+      pagination: tableMap.pagination,
+      pagePosition: tableMap.pagePosition
     }
   },
   computed: {
@@ -424,6 +447,11 @@ export default {
       display: none;
     }
   }
+}
+.setRight {
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
 .basic-list__hd {
   display: flex;

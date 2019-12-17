@@ -61,6 +61,11 @@ const tableMap = {
     }
     // 操作的组件可以是btn可以是a
   ],
-  'actionBtnWidth': 250// 操作宽度
+  'actionBtnWidth': 250,
+  // 操作宽度
+  'pagination': true,
+  // 控制分页显示隐藏
+  'pagePosition': 'up'
+  // 控制分页位置
 }
 export default tableMap

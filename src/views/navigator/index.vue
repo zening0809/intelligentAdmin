@@ -2,7 +2,7 @@
   <div>
     <search-bar :query-list="queryList" :dispatch="dispatch" :update-state="updateState" />
     <!-- 列表 -->
-    <Tbale-list :state="state" />
+    <Tbale-list :state="state" :dispatch="dispatch" :update-state="updateState" />
   </div>
 </template>
 <script>
@@ -43,7 +43,8 @@ export default {
       this.dispatch('queryTest', {
         data: { page: this.listQuery.page, limit: this.listQuery.limit, ...query }
       })
-    }
+    },
+    
   }
 }
 </script>
