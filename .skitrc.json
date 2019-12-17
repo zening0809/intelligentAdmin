@@ -4,17 +4,18 @@
     "path": "/navigator/index",
     "name": "navigator",
     "title": "导航",
-    "icon": "tab" 
+    "icon": "tab"
   },
   "containers": {
-    "searchBar": [
-      {
+    "searchBar": [{
         "type": "input",
         "key": "customerName",
         "label": "test2",
         "show": true,
         "span": 1,
-        "defValue": {"value": "aaa"},
+        "defValue": {
+          "value": "aaa"
+        },
         "placeholder": "请输入",
         "props": {
           "size": "mini"
@@ -26,7 +27,9 @@
         "label": "test2",
         "show": true,
         "span": 1,
-        "defValue": {"value": "aaa"},
+        "defValue": {
+          "value": "aaa"
+        },
         "placeholder": "请输入",
         "props": {
           "size": "mini"
@@ -37,10 +40,11 @@
         "key": "orderSource",
         "label": "渠道",
         "needQuery": false,
-        "defValue": {"value": ""},
+        "defValue": {
+          "value": ""
+        },
         "span": 1,
-        "dataList": [
-          {
+        "dataList": [{
             "value": "",
             "label": "请选择"
           },
@@ -61,69 +65,47 @@
     ],
     "tableConfig": {
       "fieldsArr": [{
-        "key": "author",
-        "name": "test2",
-        "show": true,
-        "width":200
+          "key": "author",
+          "name": "test2",
+          "show": true,
+          "width": 200
         },
         {
-        "key": "display_time",
-        "name": "收货客户",
-        "show": true
-        }],
-        "formItems": [{
-        "type": "button",
-        "name": "功能1",
-        "btype": "success"
+          "key": "display_time",
+          "name": "收货客户",
+          "show": true
+        }
+      ],
+      "formItems": [{
+          "type": "button",
+          "name": "功能1",
+          "btype": "success"
         },
         {
-        "type": "button",
-        "name": "功能2",
-        "btype": "primary"
+          "type": "button",
+          "name": "功能2",
+          "btype": "primary"
         },
         {
-        "type": "button",
-        "name": "功能3",
-        "btype": "danger"
-        }],
-        "selectType": "multiple",
-        "showActionCol": true,
-        "showIndexCol": true,
-        "actionColLabel": "扩展功能？",
-        "actionBtn": [
-        {
-        "type": "btn",
-        "name": "点击大按钮",
-        "btype": "danger"
+          "type": "button",
+          "name": "功能3",
+          "btype": "danger"
+        }
+      ],
+      "selectType": "multiple",
+      "showActionCol": true,
+      "showIndexCol": true,
+      "actionColLabel": "操作",
+      "actionBtn": [{
+          "type": "btn",
+          "name": "点击大按钮",
+          "btype": "danger"
         },
         {
-        "type": "a",
-        "name": "大链接"
+          "type": "a",
+          "name": "大链接"
         }
       ]
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

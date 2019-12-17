@@ -6,19 +6,13 @@
       :total="state.total"
       :page-size="state.pageSize"
       :page-index="state.pageIndex"
-      :is-single="isSingle"
-      :show-index-col="showIndexCol"
-      :show-action-col="showActionCol"
-      :action-col-label="actionColLabel"
-      :action-btn="actionBtn"
-      :action-col-width="actioWidth"
     />
   </div>
 </template>
 <script>
-import tableMap from './tableMap'
 import TableBar from '@container/basicList'
 import ExactList from '@/minxs/exactList'
+import tableMap from './tableMap.json'
 export default {
   components: {
     TableBar
@@ -37,13 +31,7 @@ export default {
     return {
       fields: tableMap.fieldsArr,
       fieldsArr: [],
-      isSingle: tableMap.selectType,
-      showActionCol: tableMap.showActionCol,
-      query: {},
-      showIndexCol: tableMap.showIndexCol,
-      actionColLabel: tableMap.actionColLabel,
-      actionBtn: tableMap.actionBtn,
-      actioWidth: tableMap.actionBtnWidth
+      query: {}
     }
   },
   watch: {},

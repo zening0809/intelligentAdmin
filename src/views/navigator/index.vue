@@ -2,7 +2,7 @@
   <div>
     <search-bar />
     <!-- 列表 -->
-    <tbale-list :state="state" />
+    <Tbale-list :state="state" />
   </div>
 </template>
 <script>
@@ -19,7 +19,7 @@ export default {
   mixins: [mixinStores, pageList],
   data() {
     return {
-      storeKey: 'testList',
+      storeKey: 'navigator',
       formInline: {
         user: '',
         region: ''
@@ -47,3 +47,4 @@ export default {
   }
 }
 </script>
+
