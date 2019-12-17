@@ -18,6 +18,12 @@ export default {
   components: {
     SearchBar
   },
+  props: {
+    queryList: {
+      type: Function,
+      default: () => {}
+    }
+  },
   data() {
     return {
       fields: [],
@@ -37,7 +43,11 @@ export default {
   },
   methods: {
     searchHandle(query) {
-      console.log(query)
+      console.log(this.query)
+      for (const key in this.query) {
+        this.query[key] = this.query[key] ? this.query[key].value : undefined
+      }
+      this.queryList(this.query)
     },
     searchReset() {
     }

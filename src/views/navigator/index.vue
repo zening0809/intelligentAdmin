@@ -1,6 +1,6 @@
 <template>
   <div>
-    <search-bar />
+    <search-bar :query-list="queryList" />
     <!-- 列表 -->
     <Tbale-list :state="state" />
   </div>
@@ -41,7 +41,7 @@ export default {
   methods: {
     queryList(query = {}) {
       this.dispatch('queryTest', {
-        data: { page: this.listQuery.page, limit: this.listQuery.limit }
+        data: { page: this.listQuery.page, limit: this.listQuery.limit, ...query }
       })
     }
   }
