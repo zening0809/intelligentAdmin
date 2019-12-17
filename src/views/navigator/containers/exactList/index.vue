@@ -42,7 +42,7 @@ export default {
   data() {
     return {
       fields: tableMap.fieldsArr,
-      fieldsArr: [],
+      fieldsArr: []
     }
   },
   computed: {
@@ -59,12 +59,12 @@ export default {
   },
   methods: {
     pageindexfun(val) {
-      this.updateState({ query:this.query, pageIndex: val, loading: true })
-      this.dispatch('queryList', { query:this.query })
+      this.updateState({ query: this.query, pageIndex: val, loading: true })
+      this.dispatch('queryList', { query: this.query })
     },
     pagesizefun(val) {
-      this.updateState({ query:this.query, pageIndex: 0, size:val, loading: true })
-      this.dispatch('queryList', { query:this.query })
+      this.updateState({ query: this.query, pageIndex: 0, size: val, loading: true })
+      this.dispatch('queryList', { query: this.query })
     }
   }
 }

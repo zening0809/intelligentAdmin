@@ -66,6 +66,6 @@ const tableMap = {
   'pagination': true,
   // 控制分页显示隐藏
   'pagePosition': 'up'
-  // 控制分页位置
+  // 控制分页位置 up / down
 }
 export default tableMap

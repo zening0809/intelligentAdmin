@@ -43,8 +43,7 @@ export default {
       this.dispatch('queryTest', {
         data: { page: this.listQuery.page, limit: this.listQuery.limit, ...query }
       })
-    },
-    
+    }
   }
 }
 </script>
