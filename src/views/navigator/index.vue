@@ -1,6 +1,6 @@
 <template>
   <div>
-    <search-bar :query-list="queryList" />
+    <search-bar :query-list="queryList" :dispatch="dispatch" :update-state="updateState" />
     <!-- 列表 -->
     <Tbale-list :state="state" />
   </div>
@@ -30,13 +30,12 @@ export default {
       }
     }
   },
-  computed: {
-  },
+  computed: {},
   created() {
     this.registStore(store)
   },
   mounted() {
-    this.queryList()
+    // this.queryList();
   },
   methods: {
     queryList(query = {}) {
