@@ -49,7 +49,7 @@ export default {
       //   this.query[key] = this.query[key] ? this.query[key].value : undefined
       // }
       // this.queryList(this.query)
-      this.updateState({ query, pageIndex: 0 })
+      this.updateState({ query, pageIndex: 0, loading: true })
       this.dispatch('queryList', { query })
     },
     searchReset() {

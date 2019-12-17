@@ -6,6 +6,7 @@
       :total="state.total"
       :page-size="state.pageSize"
       :page-index="state.pageIndex"
+      :loading="state.loading"
     />
   </div>
 </template>
