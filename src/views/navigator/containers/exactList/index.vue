@@ -2,7 +2,7 @@
   <div>
     <Table-bar
       :fields="fields"
-      :list="state.tableData"
+      :list="state.list"
       :total="state.total"
       :page-size="state.pageSize"
       :page-index="state.pageIndex"

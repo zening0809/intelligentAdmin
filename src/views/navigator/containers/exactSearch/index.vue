@@ -18,6 +18,10 @@ export default {
   components: {
     SearchBar
   },
+  props: {
+    dispatch: Function,
+    updateState: Function
+  },
   data() {
     return {
       fields: [],
@@ -38,6 +42,8 @@ export default {
   methods: {
     searchHandle(query) {
       console.log(query)
+      this.updateState({ query, pageIndex: 0 })
+      this.dispatch('queryList', { query })
     },
     searchReset() {
     }

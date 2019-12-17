@@ -140,8 +140,8 @@ export function generateActions(config) {
               loading: true
             })
             const {
-              head,
-              body
+              code,
+              content
             } = await (item.caller || config.caller)[item.callee]({
               ...state.query,
               page: {
@@ -152,18 +152,16 @@ export function generateActions(config) {
             const payload = {
               loading: false
             }
-            if (head.code === '200') {
-              payload.list = _.get(body, 'records') || []
-              payload.total = _.get(body, 'total') || 0
+            if (code === 1) {
+              payload.list = _.get(content, 'rows') || []
+              payload.total = _.get(content, 'total') || 0
             } else {
               if (item.showMsg) {
-                this._vm.$message.error(head.subMessage)
+                this._vm.$message.error(content.message)
               }
             }
-            console.log(body, 'body')
-            console.log(payload, 'payload')
+            console.log(payload)
             // payload.list
-            console.log(this._vm, 'storeKeystoreKey')
             commit('update', payload)
           } catch (e) {
             commit('update', {
