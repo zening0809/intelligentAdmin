@@ -1,5 +1,6 @@
 {
   "name": "navigator",
+  "type": "report",
   "menu": {
     "path": "/navigator/index",
     "name": "navigator",
