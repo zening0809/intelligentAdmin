@@ -92,10 +92,12 @@
           "btype": "danger"
         }
       ],
-      "immediateQuery": true,
       "selectType": "multiple",
+      "immediateQuery": true,
       "showActionCol": true,
       "showIndexCol": true,
+      "pagination": true,
+      "pagePosition": "up",
       "actionColLabel": "操作",
       "actionBtn": [{
           "type": "btn",
@@ -107,7 +109,7 @@
           "name": "大链接"
         }
       ]
-    }
+    }    
   },
   "feature": {
     "config": {
