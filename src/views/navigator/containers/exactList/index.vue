@@ -7,9 +7,9 @@
       :page-size="state.pageSize"
       :page-index="state.pageIndex"
       :loading="state.loading"
-      :pageindexfun="pageindexfun"
-      :pagesizefun="pagesizefun"
       :on-export="onExport"
+      :pageindexfun="pageIndexHandle"
+      :pagesizefun="pageSizeHandle"
     />
   </div>
 </template>
@@ -63,12 +63,12 @@ export default {
     }
   },
   methods: {
-    pageindexfun(val) {
-      this.updateState({ query: this.query, pageIndex: val, loading: true })
+    pageIndexHandle(val) {
+      this.updateState({ pageIndex: val, loading: true })
       this.dispatch('queryList', { query: this.query })
     },
-    pagesizefun(val) {
-      this.updateState({ query: this.query, pageIndex: 0, size: val, loading: true })
+    pageSizeHandle(val) {
+      this.updateState({ pageIndex: 0, size: val, loading: true })
       this.dispatch('queryList', { query: this.query })
     }
   }
