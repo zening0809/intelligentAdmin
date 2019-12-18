@@ -14,8 +14,10 @@
     :select-type="isSingle"
     :show-action-col="showActionCol"
     :action-render="actionRender"
+    :on-export="onExport"
   >
     <template slot="hd-col--l">
+      <el-button @click="onExport">导出</el-button>
       <template>
         <Btns />
       </template>
@@ -83,6 +85,10 @@ export default {
       default: () => {}
     },
     pagesizefun: {
+      type: Function,
+      default: () => {}
+    },
+    onExport: {
       type: Function,
       default: () => {}
     }

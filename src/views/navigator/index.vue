@@ -1,8 +1,8 @@
 <template>
   <div>
-    <search-bar :query-list="queryList" :dispatch="dispatch" :update-state="updateState" />
+    <search-bar ref="search" :query-list="queryList" :dispatch="dispatch" :update-state="updateState" />
     <!-- 列表 -->
-    <Tbale-list :state="state" :dispatch="dispatch" :update-state="updateState" />
+    <Tbale-list :state="state" :dispatch="dispatch" :update-state="updateState" :on-export="onExport" />
   </div>
 </template>
 <script>
@@ -11,6 +11,7 @@ import TbaleList from './containers/exactList'
 import store from './store'
 import mixinStores from '@/minxs/store'
 import pageList from '@/minxs/pageList'
+import { download } from '@/utils/download'
 export default {
   components: {
     SearchBar,
@@ -35,13 +36,21 @@ export default {
     this.registStore(store)
   },
   mounted() {
-    // this.queryList();
-    // console.log(this.$store.state, 'this.$store.state')
   },
   methods: {
     queryList(query = {}) {
       this.dispatch('queryTest', {
         data: { page: this.listQuery.page, limit: this.listQuery.limit, ...query }
+      })
+    },
+    // 导出
+    onExport() {
+      const query = _.cloneDeep(this.$refs.search.query)
+      // this.queryToEnd(query);
+      // removeEmptyAttr(query);
+      return download({
+        url: '/zip',
+        data: query
       })
     }
   }

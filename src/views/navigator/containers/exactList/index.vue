@@ -9,6 +9,7 @@
       :loading="state.loading"
       :pageindexfun="pageindexfun"
       :pagesizefun="pagesizefun"
+      :on-export="onExport"
     />
   </div>
 </template>
@@ -32,6 +33,10 @@ export default {
       default: () => {}
     },
     dispatch: {
+      type: Function,
+      default: () => {}
+    },
+    onExport: {
       type: Function,
       default: () => {}
     }

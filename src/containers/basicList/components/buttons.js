@@ -4,18 +4,21 @@ export default {
       msg: 'Hello World'
     }
   },
-  props: {},
-  inject: ['formItems'],
-  methods: {
-    onClick() {
+  props: {
+    onExport: {
+      type: Function,
+      default: () => {}
     }
   },
-  mounted() {
+  inject: ['formItems'],
+  methods: {
+    export() {
+      this.onExport()
+    }
   },
   render() {
     return (<div>{
       this.formItems.map(item => {
-        console.log(item)
         return ((<el-button type={item.btype}
           size = 'small'
           icon={item.icon}

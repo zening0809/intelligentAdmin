@@ -13,18 +13,24 @@
   ],
   "formItems": [{
       "type": "button",
-      "name": "功能1",
-      "btype": "success"
+      "name": "导出",
+      "btype": "success",
+      "on": "exprot"
+
     },
     {
       "type": "button",
       "name": "功能2",
-      "btype": "primary"
+      "btype": "primary",
+      "on": "show1"
+ 
     },
     {
       "type": "button",
       "name": "功能3",
-      "btype": "danger"
+      "btype": "danger",
+      "on": "show1"
+      
     }
   ],
   "selectType": "multiple",
