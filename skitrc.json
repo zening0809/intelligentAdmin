@@ -64,7 +64,7 @@
         }
       }
     ],
-    "tableConfig": {
+    "tableConfig":{
       "fieldsArr": [{
           "key": "author",
           "name": "test2",
@@ -78,21 +78,11 @@
         }
       ],
       "formItems": [{
-          "type": "button",
-          "name": "功能1",
-          "btype": "success"
-        },
-        {
-          "type": "button",
-          "name": "功能2",
-          "btype": "primary"
-        },
-        {
-          "type": "button",
-          "name": "功能3",
-          "btype": "danger"
-        }
-      ],
+        "type": "button",
+        "name": "导出",
+        "btype": "primary",
+        "feature": "export"
+      }],
       "selectType": "multiple",
       "immediateQuery": true,
       "showActionCol": true,
@@ -110,13 +100,14 @@
           "name": "大链接"
         }
       ]
-    }    
+    }
   },
   "feature": {
     "config": {
       "prefix": "hahahahhahahhaha",
       "items": [
-        { "key": "queryList", "callee": "bbbb", "url": "/aaaa" }
+        { "key": "queryList", "callee": "bbbb", "url": "/aaaa" },
+        { "key": "exportList", "callee": "exportList", "url": "/exportList" }
       ]
     }
   }

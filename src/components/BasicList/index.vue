@@ -34,7 +34,6 @@
         :stripe="stripe"
         :data="list"
         :row-key="rowKey"
-        :header-cell-style="{fontSize: '14px',color: '#474E54', background: '#E6E7E8'}"
         :height="tableH"
         :tree-props="treeProps"
         @selection-change="selectionChange"
@@ -113,34 +112,30 @@
           </el-table-column>
       </template>
     </el-table>
-    <div class="bottompagin">
-      <div class="basic-list__hd-col--r f-fr rightset">
-        <el-pagination
-          v-if="showPage && list.length && pagination && pagePosition === 'down'"
-          :current-page="pageIndex"
-          :page-size="pageSize"
-          :page-sizes="pageSizes"
-          :total="total"
-          layout="total, sizes, prev, jumper, slot, next "
-          @current-change="pageIndexChange"
-          @size-change="pageSizeChange"
-        >
-          <span class="page-count">/ {{ pageCount }} </span>
-        </el-pagination>
-        <a
-          v-if="showColSet"
-          class="el-icon-setting basic-list__field-set-btn"
-          @click="updateColSetDlgVis(true)"
-        />
-      </div>
+    <div class="basic-list__hd-col--r f-fr setRight">
+      <el-pagination
+        v-if="showPage && list.length && pagination && pagePosition === 'down'"
+        :current-page="pageIndex"
+        :page-size="pageSize"
+        :page-sizes="pageSizes"
+        :total="total"
+        layout="total, sizes, prev, jumper, slot, next "
+        @current-change="pageIndexChange"
+        @size-change="pageSizeChange"
+      >
+        <span class="page-count">/ {{ pageCount }} </span>
+      </el-pagination>
+      <a
+        v-if="showColSet"
+        class="el-icon-setting basic-list__field-set-btn"
+        @click="updateColSetDlgVis(true)"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import TableColumn from '@/components/tableColumn'
-import tableMap from '../../views/testList/tableMap'
-
 const DEFAULTS = {
   radioIndex: null
 }
@@ -300,6 +295,7 @@ export default {
       default: false
     }
   },
+  inject: ['tableMap'],
   data() {
     return {
       ..._.cloneDeep(DEFAULTS),
@@ -309,8 +305,8 @@ export default {
       colFields: this.fields,
       // 列设置是否已经保存过
       colSetSaved: false,
-      pagination: tableMap.pagination,
-      pagePosition: tableMap.pagePosition
+      pagination: this.tableMap.pagination,
+      pagePosition: this.tableMap.pagePosition
     }
   },
   computed: {
@@ -450,12 +446,10 @@ export default {
     }
   }
 }
-.bottompagin {
-  width: 100%;
-  text-align: right;
-}
-.rightset {
-  display: inline-block
+.setRight {
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
 .basic-list__hd {
   display: flex;
@@ -465,11 +459,9 @@ export default {
   justify-content: space-between;
   border-bottom: none;
   background: #fcfcfc;
+
   .el-dropdown:not(:first-child) {
     margin-left: 10px;
-  }
-  .f-cb {
-    font-weight: 700;
   }
 }
 .basic-list__sel-field-btn {
@@ -492,8 +484,5 @@ export default {
     font-weight: normal;
     color: #606266;
   }
-}
-/deep/ .el-input__inner {
-  font-size: 13px !important;
 }
 </style>
