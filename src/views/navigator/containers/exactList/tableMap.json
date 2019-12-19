@@ -9,6 +9,11 @@
       "key": "display_time",
       "name": "收货客户",
       "show": true
+    },
+    {
+      "key": "forecast",
+      "name": "金额",
+      "show": true
     }
   ],
   "formItems": [{
