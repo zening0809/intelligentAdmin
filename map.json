@@ -1,0 +1,15 @@
+{
+  "name": "worldMap",
+  "type": "chars",
+  "mapShape": "world",
+  "menu": {
+    "path": "/worldMap/index",
+    "name": "worldMap",
+    "title": "世界地图",
+    "icon": "tab"
+  },
+  "feature": {
+  }
+}
+
+
