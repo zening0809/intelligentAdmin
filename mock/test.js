@@ -53,6 +53,13 @@ export default [
         }
       }
     }
+  },
+  {
+    url: '/hahahahhahahhaha/exportHandle',
+    type: 'post',
+    response: config => {
+      return 'exportUrl'
+    }
   }
 ]
 

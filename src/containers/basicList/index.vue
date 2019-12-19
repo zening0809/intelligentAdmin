@@ -14,13 +14,9 @@
     :select-type="isSingle"
     :show-action-col="showActionCol"
     :action-render="actionRender"
-    :on-export="onExport"
   >
     <template slot="hd-col--l">
-      <el-button @click="onExport">导出</el-button>
-      <template>
-        <Btns />
-      </template>
+      <Btns :dispatch-feature="dispatchFeature" />
     </template>
   </Basic-list>
 </template>
@@ -91,6 +87,10 @@ export default {
     onExport: {
       type: Function,
       default: () => {}
+    },
+    dispatch: {
+      type: Function,
+      default: () => {}
     }
   },
   data() {
@@ -114,6 +114,16 @@ export default {
           })}
         </div>
       )
+    },
+    dispatchFeature(type) {
+      switch (type) {
+        case 'export':
+          this.dispatch('exportList', {})
+          break
+
+        default:
+          break
+      }
     }
   }
 }

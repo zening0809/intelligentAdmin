@@ -5,23 +5,26 @@ export default {
     }
   },
   props: {
-    onExport: {
+    dispatchFeature: {
       type: Function,
-      default: () => {}
+      default: () => { }
     }
   },
-  inject: ['formItems'],
+  inject: ['tableMap'],
   methods: {
     export() {
-      this.onExport()
     }
   },
   render() {
     return (<div>{
-      this.formItems.map(item => {
+      this.tableMap.formItems.map(item => {
         return ((<el-button type={item.btype}
-          size = 'small'
+          size='small'
           icon={item.icon}
+          onClick={(e) => {
+            e.stopPropagation()
+            this.dispatchFeature(item.feature)
+          }}
         > {item.name}</el-button>))
       })} </div>
     )

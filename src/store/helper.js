@@ -1,3 +1,5 @@
+import { capitalize } from '@/utils/lodash'
+
 /**
  * module对象合并
  * @param {Array|Object} sps 需要合并的父对象
@@ -98,6 +100,7 @@ export function generateActions(config) {
     const item = items[i]
     // 是否显示消息框 赋默认值
     item.showMsg = item.showMsg || true
+    console.log(item.key)
     switch (item.key) {
       case 'queryEntity':
         actions.queryEntity = async function({
@@ -168,6 +171,21 @@ export function generateActions(config) {
               loading: false
             })
             console.error('queryList', e)
+          }
+        }
+        break
+      case 'exportList':
+        actions.exportList = async function({
+          commit,
+          state
+        }) {
+          try {
+            const exportUrl = await (item.caller || config.caller)[item.callee]({
+              ...state.query
+            })
+            console.log('exportUrl', exportUrl)
+          } catch (err) {
+            console.log(err)
           }
         }
         break

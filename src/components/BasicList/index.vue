@@ -1,115 +1,115 @@
 <template>
   <div v-loading="loading" class="basic-list">
-      <div v-if="showHead" class="basic-list__hd f-cb">
-        <div class="basic-list__hd-col--l f-fl">
-          <slot name="hd-col--l" />
-        </div>
-        <div class="basic-list__hd-col--r f-fr">
-          <el-pagination
-            v-if="showPage && list.length && pagination && pagePosition === 'up'"
-            :current-page="pageIndex"
-            :page-size="pageSize"
-            :page-sizes="pageSizes"
-            :total="total"
-            layout="total, sizes, prev, jumper, slot, next "
-            @current-change="pageIndexChange"
-            @size-change="pageSizeChange"
-          >
-            <span class="page-count">/ {{ pageCount }} </span>
-          </el-pagination>
-          <a
-            v-if="showColSet"
-            class="el-icon-setting basic-list__field-set-btn"
-            @click="updateColSetDlgVis(true)"
-          />
-        </div>
+    <div v-if="showHead" class="basic-list__hd f-cb">
+      <div class="basic-list__hd-col--l f-fl">
+        <slot name="hd-col--l" />
       </div>
-      <el-table
-        ref="table"
-        border
-        size="small"
-        style="width: 100%"
-        :lazy="lazy"
-        :load="load"
-        :stripe="stripe"
-        :data="list"
-        :row-key="rowKey"
-        :height="tableH"
-        :tree-props="treeProps"
-        @selection-change="selectionChange"
-        @row-click="rowClick"
+      <div class="basic-list__hd-col--r f-fr">
+        <el-pagination
+          v-if="showPage && list.length && pagination && pagePosition === 'up'"
+          :current-page="pageIndex"
+          :page-size="pageSize"
+          :page-sizes="pageSizes"
+          :total="total"
+          layout="total, sizes, prev, jumper, slot, next "
+          @current-change="pageIndexChange"
+          @size-change="pageSizeChange"
+        >
+          <span class="page-count">/ {{ pageCount }} </span>
+        </el-pagination>
+        <a
+          v-if="showColSet"
+          class="el-icon-setting basic-list__field-set-btn"
+          @click="updateColSetDlgVis(true)"
+        />
+      </div>
+    </div>
+    <el-table
+      ref="table"
+      border
+      size="small"
+      style="width: 100%"
+      :lazy="lazy"
+      :load="load"
+      :stripe="stripe"
+      :data="list"
+      :row-key="rowKey"
+      :height="tableH"
+      :tree-props="treeProps"
+      @selection-change="selectionChange"
+      @row-click="rowClick"
+    >
+      <el-table-column
+        v-if="showSelectCol && selectType === 'multiple'"
+        align="center"
+        type="selection"
+        :width="50"
+      />
+      <el-table-column v-if="showSelectCol && selectType === 'single'" :width="50" align="center">
+        <template slot-scope="scope">
+          <el-radio v-model="radioIndex" :label="scope.$index">&nbsp;</el-radio>
+        </template>
+      </el-table-column>
+      <el-table-column
+        v-if="showIndexCol"
+        align="center"
+        type="index"
+        :width="indexColWidth"
+        fixed="left"
+        :label="indexColLabel"
+        :index="getIndex"
+      />
+      <el-table-column
+        v-if="showActionCol"
+        align="center"
+        class-name="basic-list__col--action"
+        :fixed="actionColFixed"
+        :width="actionColWidth"
+        :label="actionColLabel"
       >
+        <template slot-scope="scope">
+          <table-column
+            :index="scope.$index"
+            :row="scope.row"
+            :col="scope.column"
+            :render="actionRender"
+          />
+        </template>
+      </el-table-column>
+      <template v-for="(item, index) of colFields">
         <el-table-column
-          v-if="showSelectCol && selectType === 'multiple'"
-          align="center"
-          type="selection"
-          :width="50"
+          v-if="!item.render"
+          :key="`${item.key}-${index}`"
+          :class-name="item.classNames ? item.classNames.join(' ') : null"
+          :prop="item.key"
+          :label="item.name"
+          :align="item.align || 'center'"
+          :width="item.width ? item.width + 'px' : undefined"
+          :min-width="item.minWidth ? item.minWidth + 'px' : '120px'"
+          :render-header="item.hdRender"
+          :formatter="item.formatter"
         />
-        <el-table-column v-if="showSelectCol && selectType === 'single'" :width="50" align="center">
-          <template slot-scope="scope">
-            <el-radio v-model="radioIndex" :label="scope.$index">&nbsp;</el-radio>
-          </template>
-        </el-table-column>
         <el-table-column
-          v-if="showIndexCol"
-          align="center"
-          type="index"
-          :width="indexColWidth"
-          fixed="left"
-          :label="indexColLabel"
-          :index="getIndex"
-        />
-        <el-table-column
-          v-if="showActionCol"
-          align="center"
-          class-name="basic-list__col--action"
-          :fixed="actionColFixed"
-          :width="actionColWidth"
-          :label="actionColLabel"
+          v-else
+          :key="`${item.key}-${index}`"
+          :class-name="item.classNames ? item.classNames.join(' ') : null"
+          :prop="item.key"
+          :label="item.name"
+          :align="item.align || 'center'"
+          :width="item.width ? item.width + 'px' : undefined"
+          :min-width="item.minWidth ? item.minWidth + 'px' : '120px'"
+          :render-header="item.hdRender"
         >
           <template slot-scope="scope">
             <table-column
               :index="scope.$index"
               :row="scope.row"
               :col="scope.column"
-              :render="actionRender"
+              :field="item"
+              :render="item.render"
             />
           </template>
         </el-table-column>
-        <template v-for="(item, index) of colFields">
-          <el-table-column
-            v-if="!item.render"
-            :key="`${item.key}-${index}`"
-            :class-name="item.classNames ? item.classNames.join(' ') : null"
-            :prop="item.key"
-            :label="item.name"
-            :align="item.align || 'center'"
-            :width="item.width ? item.width + 'px' : undefined"
-            :min-width="item.minWidth ? item.minWidth + 'px' : '120px'"
-            :render-header="item.hdRender"
-            :formatter="item.formatter"
-          />
-          <el-table-column
-            v-else
-            :key="`${item.key}-${index}`"
-            :class-name="item.classNames ? item.classNames.join(' ') : null"
-            :prop="item.key"
-            :label="item.name"
-            :align="item.align || 'center'"
-            :width="item.width ? item.width + 'px' : undefined"
-            :min-width="item.minWidth ? item.minWidth + 'px' : '120px'"
-            :render-header="item.hdRender"
-          >
-            <template slot-scope="scope">
-              <table-column
-                :index="scope.$index"
-                :row="scope.row"
-                :col="scope.column"
-                :field="item"
-                :render="item.render"
-              />
-            </template>
-          </el-table-column>
       </template>
     </el-table>
     <div class="basic-list__hd-col--r f-fr setRight">
@@ -136,8 +136,6 @@
 
 <script>
 import TableColumn from '@/components/tableColumn'
-import tableMap from '../../views/testList/tableMap'
-
 const DEFAULTS = {
   radioIndex: null
 }
@@ -297,6 +295,7 @@ export default {
       default: false
     }
   },
+  inject: ['tableMap'],
   data() {
     return {
       ..._.cloneDeep(DEFAULTS),
@@ -306,8 +305,8 @@ export default {
       colFields: this.fields,
       // 列设置是否已经保存过
       colSetSaved: false,
-      pagination: tableMap.pagination,
-      pagePosition: tableMap.pagePosition
+      pagination: this.tableMap.pagination,
+      pagePosition: this.tableMap.pagePosition
     }
   },
   computed: {
