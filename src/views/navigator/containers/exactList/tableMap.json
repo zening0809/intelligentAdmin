@@ -1,0 +1,56 @@
+{
+  "fieldsArr": [{
+      "key": "author",
+      "name": "test2",
+      "show": true,
+      "width": 200
+    },
+    {
+      "key": "display_time",
+      "name": "收货客户",
+      "show": true
+    },
+    {
+      "key": "forecast",
+      "name": "金额",
+      "show": true
+    }
+  ],
+  "formItems": [{
+      "type": "button",
+      "name": "导出",
+      "btype": "success",
+      "on": "exprot"
+
+    },
+    {
+      "type": "button",
+      "name": "功能2",
+      "btype": "primary",
+      "on": "show1"
+ 
+    },
+    {
+      "type": "button",
+      "name": "功能3",
+      "btype": "danger",
+      "on": "show1"
+      
+    }
+  ],
+  "selectType": "multiple",
+  "immediateQuery": true,
+  "showActionCol": true,
+  "showIndexCol": true,
+  "actionColLabel": "操作",
+  "actionBtn": [{
+      "type": "btn",
+      "name": "点击大按钮",
+      "btype": "danger"
+    },
+    {
+      "type": "a",
+      "name": "大链接"
+    }
+  ]
+}
