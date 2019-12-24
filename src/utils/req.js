@@ -50,9 +50,17 @@ export function generate(config) {
         })
       }
       catchPendings[key] = true
+      // console.log(process.env.VUE_APP_BASE_API + (item.prefix || config.prefix || '') + item.url)
+      // console.log(item.prefix )
+      console.log(process.env.VUE_APP_BASE_API )
+      console.log(config.prefix )
+      console.log(item.url)
+      console.log(process.env.VUE_APP_BASE_API + '/' + (item.prefix || config.prefix || '') + item.url)
+      // console.log(config.url )
+      // console.log(process.env.VUE_APP_BASE_API )
       return axios(
         Object.assign({
-          url: process.env.VUE_APP_BASE_API + (item.prefix || config.prefix || '') + item.url,
+          url: process.env.VUE_APP_BASE_API + '/' + (item.prefix || config.prefix || '') + item.url,
           transformRequest: function(data, headers) {
             if (item.cType === 3) {
               return qs.stringify(data)
@@ -70,8 +78,9 @@ export function generate(config) {
       }) {
         // 这里是因为 dialog 关闭延迟导致的
         // 需要延迟清空状态
-        setTimeout(() => {
+        const timer = setTimeout(() => {
           catchPendings[key] = false
+          clearTimeout(timer)
         }, 300)
         return data
       }).catch((err) => {

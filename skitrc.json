@@ -10,70 +10,92 @@
   "containers": {
     "searchBar": [{
         "type": "input",
-        "key": "customerName",
-        "label": "test2",
+        "key": "phonenum",
+        "label": "手机号",
         "show": true,
         "span": 1,
         "defValue": {
-          "value": "aaa"
+          "value": ""
         },
-        "placeholder": "请输入",
+        "placeholder": "请输入手机号",
         "props": {
           "size": "mini"
         }
       },
       {
         "type": "input",
-        "key": "ccc",
-        "label": "test2",
+        "key": "nickname",
+        "label": "昵称",
         "show": true,
         "span": 1,
         "defValue": {
-          "value": "aaa"
+          "value": ""
         },
-        "placeholder": "请输入",
+        "placeholder": "请输入昵称",
         "props": {
           "size": "mini"
         }
       },
       {
         "type": "select",
-        "key": "orderSource",
-        "label": "渠道",
-        "needQuery": false,
+        "key": "gender",
+        "label": "性别",
+        "show": true,
+        "span": 1,
         "defValue": {
           "value": ""
         },
-        "span": 1,
-        "dataList": [{
-            "value": "",
-            "label": "请选择"
-          },
-          {
-            "value": 0,
-            "label": "上游下发"
-          },
-          {
-            "value": 1,
-            "label": "手工创建"
-          }
-        ],
+        "placeholder": "请选择性别",
         "props": {
-          "size": "mini",
-          "placeholder": "请选择"
+          "size": "mini"
+        },
+        "dataList": [
+          {
+            "label": "男",
+            "value": 1
+          },
+          {
+            "label": "女",
+            "value": 0
+          }
+        ]
+      },
+      {
+        "type": "date-range",
+        "key": "timeRange",
+        "label": "时间范围",
+        "show": true,
+        "span": 2,
+        "defValue": {
+          "value": []
+        },
+        "placeholder": "请输入",
+        "props": {
+          "type": "datetimerange",
+          "range-separator": "至",
+          "start-placeholder": "开始日期",
+          "end-placeholder": "结束日期",
+          "clearable": false,
+          "value-format": "yyyy-MM-dd HH:mm:ss",
+          "size": "mini"
         }
       }
     ],
     "tableConfig":{
       "fieldsArr": [{
-          "key": "author",
-          "name": "test2",
+          "key": "nickname",
+          "name": "昵称",
           "show": true,
           "width": 200
         },
         {
-          "key": "display_time",
-          "name": "收货客户",
+          "key": "phonenum",
+          "name": "手机号",
+          "show": true
+        },
+        {
+          "key": "gender",
+          "name": "性别",
           "show": true
         }
       ],
@@ -104,10 +126,10 @@
   },
   "feature": {
     "config": {
-      "prefix": "hahahahhahahhaha",
+      "prefix": "user",
       "items": [
-        { "key": "queryList", "callee": "bbbb", "url": "/aaaa" },
-        { "key": "exportList", "callee": "exportList", "url": "/exportList" }
+        { "key": "queryList", "callee": "bbbb", "url": "/query" },
+        { "key": "exportList", "callee": "exportList", "url": "/export" }
       ]
     }
   }

@@ -122,7 +122,7 @@ export default {
                     ? item.dataList.map((subItem, key) => {
                       return (
                         <el-option
-                          key={key + subItem.value}
+                          key={Symbol(key)}
                           label={subItem.label}
                           value={subItem.value}
                         />
@@ -133,6 +133,22 @@ export default {
               </el-form-item>
             )
             break
+          case "date-range":
+            allItems[item.key] = (
+              <el-form-item
+                key={item.key}
+                label={item.label}
+                class="span-2"
+              >
+                <el-date-picker
+                  style={item.style}
+                  {...{ props: item.props }}
+                  v-model={this.query[item.key].value}
+                  default-time={['00:00:00', '23:59:59']}
+                />
+              </el-form-item>
+            );
+            break;
           default:
             break
         }

@@ -144,9 +144,10 @@ export function generateActions(config) {
             })
             const {
               code,
-              content
+              data,
+              message
             } = await (item.caller || config.caller)[item.callee]({
-              ...state.query,
+              query: {...state.query},
               page: {
                 current: state.pageIndex,
                 size: state.pageSize
@@ -156,14 +157,13 @@ export function generateActions(config) {
               loading: false
             }
             if (code === 1) {
-              payload.list = _.get(content, 'rows') || []
-              payload.total = _.get(content, 'total') || 0
+              payload.list = _.get(data, 'data') || []
+              payload.total = _.get(data, 'total') || 0
             } else {
               if (item.showMsg) {
-                this._vm.$message.error(content.message)
+                this._vm.$message.error(message)
               }
             }
-            console.log(payload)
             // payload.list
             commit('update', payload)
           } catch (e) {
