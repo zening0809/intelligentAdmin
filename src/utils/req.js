@@ -91,3 +91,21 @@ export function generate(config) {
   }
   return map
 }
+
+
+
+/**
+ * 处理文件流下载
+ *
+ * @date 2019-12-25
+ * @param {*} blobUrl
+ */
+export function streamDownload(blobUrl, fileName) {
+  const a = document.createElement('a');
+  a.style.display = 'none';
+  a.download = fileName;
+  a.href = blobUrl;
+  a.click();
+  // document.body.removeChild(a);
+}
+

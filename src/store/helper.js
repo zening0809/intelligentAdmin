@@ -1,4 +1,5 @@
 import { capitalize } from '@/utils/lodash'
+import { streamDownload } from '@/utils/req'
 
 /**
  * module对象合并
@@ -60,6 +61,7 @@ export function merge(sps, overrides, defaults) {
   sps.push(overrides)
   return _.merge(sb, ...sps)
 }
+
 
 /**
  * 列表页module合并
@@ -180,10 +182,14 @@ export function generateActions(config) {
           state
         }) {
           try {
-            const exportUrl = await (item.caller || config.caller)[item.callee]({
+            const data = await (item.caller || config.caller)[item.callee]({
               ...state.query
             })
-            console.log('exportUrl', exportUrl)
+            // const a = document.createElement('a');
+            const fileName = `file_${new Date().getTime()}.xls` 
+            const blob = new Blob([data])
+            const blobUrl = window.URL.createObjectURL(blob)
+            streamDownload(blobUrl, fileName)
           } catch (err) {
             console.log(err)
           }
