@@ -186,7 +186,7 @@ export function generateActions(config) {
               ...state.query
             })
             // const a = document.createElement('a');
-            const fileName = `file_${new Date().getTime()}.xls` 
+            const fileName = `file_${new Date().getTime()}.xlsx` 
             const blob = new Blob([data])
             const blobUrl = window.URL.createObjectURL(blob)
             streamDownload(blobUrl, fileName)

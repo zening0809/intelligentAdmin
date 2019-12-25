@@ -126,7 +126,7 @@
   },
   "feature": {
     "config": {
-      "prefix": "user",
+      "prefix": "users",
       "items": [
         { "key": "queryList", "callee": "bbbb", "url": "/query" },
         { "key": "exportList", "callee": "exportList", "url": "/export" }
