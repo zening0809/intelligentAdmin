@@ -120,6 +120,9 @@ export default {
         case 'export':
           this.dispatch('exportList', {})
           break
+        case 'add':
+          console.log('add')
+          break
 
         default:
           break

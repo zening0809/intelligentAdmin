@@ -1,0 +1,47 @@
+{
+  "fieldsArr": [{
+      "key": "nickname",
+      "name": "昵称",
+      "show": true,
+      "width": 200
+    },
+    {
+      "key": "phonenum",
+      "name": "手机号",
+      "show": true
+    },
+    {
+      "key": "gender",
+      "name": "性别",
+      "show": true
+    }
+  ],
+  "formItems": [{
+    "type": "button",
+    "name": "导出",
+    "btype": "primary",
+    "feature": "export"
+  },{
+    "type": "button",
+    "name": "新增",
+    "btype": "success",
+    "feature": "add"
+  }],
+  "selectType": "multiple",
+  "immediateQuery": true,
+  "showActionCol": true,
+  "showIndexCol": true,
+  "pagination": true,
+  "pagePosition": "up",
+  "actionColLabel": "操作",
+  "actionBtn": [{
+      "type": "btn",
+      "name": "点击大按钮",
+      "btype": "danger"
+    },
+    {
+      "type": "a",
+      "name": "大链接"
+    }
+  ]
+}

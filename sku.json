@@ -1,0 +1,139 @@
+{
+  "name": "product",
+  "type": "report",
+  "menu": {
+    "path": "/product/index",
+    "name": "product",
+    "title": "商品",
+    "icon": "tab"
+  },
+  "containers": {
+    "searchBar": [
+      {
+        "type": "input",
+        "key": "sku",
+        "label": "商品编号",
+        "show": true,
+        "span": 1,
+        "defValue": {
+          "value": ""
+        },
+        "placeholder": "请输入商品号",
+        "props": {
+          "size": "mini"
+        }
+        },
+        {
+          "type": "input",
+          "key": "ownerName",
+          "label": "货主",
+          "show": true,
+          "span": 1,
+          "defValue": {
+            "value": ""
+          },
+          "placeholder": "请输入昵称",
+          "props": {
+            "size": "mini"
+          }
+        },
+        {
+          "type": "select",
+          "key": "type",
+          "label": "商品品级",
+          "show": true,
+          "span": 1,
+          "defValue": {
+            "value": ""
+          },
+          "placeholder": "请选择性别",
+          "props": {
+            "size": "mini"
+          },
+          "dataList": [
+            {
+              "label": "良品",
+              "value": 1
+            },
+            {
+              "label": "次品",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "type": "date-range",
+          "key": "timeRange",
+          "label": "时间范围",
+          "show": true,
+          "span": 2,
+          "defValue": {
+            "value": []
+          },
+          "placeholder": "请输入",
+          "props": {
+            "type": "datetimerange",
+            "range-separator": "至",
+            "start-placeholder": "开始日期",
+            "end-placeholder": "结束日期",
+            "clearable": false,
+            "value-format": "yyyy-MM-dd HH:mm:ss",
+            "size": "mini"
+          }
+        }
+    ],
+    "tableConfig":{
+      "fieldsArr": [{
+          "key": "sku",
+          "name": "商品编号",
+          "show": true,
+          "width": 200
+        },
+        {
+          "key": "type",
+          "name": "商品品级",
+          "show": true
+        },
+        {
+          "key": "ownerName",
+          "name": "货主",
+          "show": true
+        }
+      ],
+      "formItems": [{
+        "type": "button",
+        "name": "导出",
+        "btype": "primary",
+        "feature": "export"
+      }],
+      "selectType": "multiple",
+      "immediateQuery": true,
+      "showActionCol": true,
+      "showIndexCol": true,
+      "pagination": true,
+      "pagePosition": "up",
+      "actionColLabel": "操作",
+      "actionBtn": [{
+          "type": "btn",
+          "name": "点击大按钮",
+          "btype": "danger"
+        },
+        {
+          "type": "a",
+          "name": "大链接"
+        }
+      ]
+    }
+  },
+  "feature": {
+    "config": {
+      "prefix": "api/product",
+      "items": [
+        { "key": "queryList", "callee": "skuList", "url": "/query" },
+        { "key": "exportList", "callee": "exportList", "url": "/export" }
+      ]
+    }
+  }
+}
+
+

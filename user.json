@@ -1,10 +1,10 @@
 {
-  "name": "navigator",
+  "name": "users",
   "type": "report",
   "menu": {
-    "path": "/navigator/index",
-    "name": "navigator",
-    "title": "导航",
+    "path": "/users/index",
+    "name": "users",
+    "title": "用户",
     "icon": "tab"
   },
   "containers": {
@@ -126,9 +126,9 @@
   },
   "feature": {
     "config": {
-      "prefix": "users",
+      "prefix": "api/users",
       "items": [
-        { "key": "queryList", "callee": "bbbb", "url": "/query" },
+        { "key": "queryList", "callee": "queryList", "url": "/query" },
         { "key": "exportList", "callee": "exportList", "url": "/export" }
       ]
     }
