@@ -104,7 +104,8 @@ module.exports = {
       resolve: {
         alias: {
           '@': resolve('src'),
-          '@container': resolve('src/containers')
+          '@container': resolve('src/containers'),
+          '@component': resolve('src/components')
         }
       }}
   },

@@ -34,14 +34,20 @@
   "pagination": true,
   "pagePosition": "up",
   "actionColLabel": "操作",
-  "actionBtn": [{
-      "type": "btn",
-      "name": "点击大按钮",
-      "btype": "danger"
+  "actionBtn": [
+    {
+      "pk": "id",
+      "name": "",
+      "btype": "danger",
+      "feature": "edit",
+      "tooltip": "编辑"
     },
     {
-      "type": "a",
-      "name": "大链接"
+      "pk": "id",
+      "name": "",
+      "btype": "danger",
+      "feature": "delete",
+      "tooltip": "删除"
     }
   ]
 }

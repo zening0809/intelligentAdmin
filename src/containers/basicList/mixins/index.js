@@ -1,4 +1,4 @@
-import BasicList from '@/components/basicList'
+import BasicList from '@component/BasicList'
 /**
  * 列表页数据列表公共方法混入
  */
@@ -7,6 +7,7 @@ export default {
     BasicList
   },
   props: {
+    tableH: Number,
     state: Object,
     confirm: Function,
     updateState: Function,

@@ -1,0 +1,72 @@
+{
+  "formItems": [
+    {
+      "label": "用户名",
+      "key": "nickname",
+      "type": "input",
+      "style": {"width": "80%"},
+      "props": {
+        "placeholder": ""
+      }
+    },
+    {
+      "label": "用户手机号",
+      "key": "phonenum",
+      "type": "input",
+      "style": {"width": "80%"},
+      "props": {
+        "placeholder": ""
+      }
+    },
+    {
+      "label": "用户性别",
+      "key": "gender",
+      "type": "radio",
+      "style": {},
+      "props": {
+      },
+      "dataList": [
+        {
+          "label": "男",
+          "value": "1"
+        },
+        {
+          "label": "女",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "label": "用户备注",
+      "key": "remark",
+      "type": "input",
+      "style": {"width": "80%"},
+      "props": {
+        "type": "textarea",
+        "placeholder": ""
+      }
+    }
+  ],
+  "rules": {
+    "nickname": [
+      { "required": true, "message": "请输入活动名称", "trigger": "blur" },
+      { "min": 3, "max": 20, "message": "长度在 3 到 5 个字符", "trigger": "blur" }
+    ],
+    "phonenum": [
+      { "required": true, "message": "请输入手机号", "trigger": "blur" }
+    ],
+    "gender": [
+      { "required": true, "message": "请选择", "trigger": "change" }
+    ]
+  },
+  "formData": {
+    "nickname": "",
+    "phonenum": "",
+    "gender": "1",
+    "remark": ""
+  },
+  "moduleName": "用户",
+  "formName": "ruleForm",
+  "dialogWidth": 760,
+  "labelPosition": "right"
+}

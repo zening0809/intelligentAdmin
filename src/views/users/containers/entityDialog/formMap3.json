@@ -1,0 +1,130 @@
+{
+  "formItems": [
+    {
+      "label": "活动名称",
+      "key": "name",
+      "type": "input",
+      "style": {"width": "80%"},
+      "props": {
+        "placeholder": ""
+      }
+    },
+    {
+      "label": "活动区域",
+      "key": "region",
+      "type": "select",
+      "style": {},
+      "props": {
+        "placeholder": "请选择活动区域"
+      },
+      "dataList": [
+        {
+          "label": "区域一",
+          "value": "shanghai"
+        },
+        {
+          "label": "区域二",
+          "value": "beijing"
+        }
+      ]
+    },
+    {
+      "label": "活动性质",
+      "key": "type",
+      "type": "checkbox",
+      "style": {},
+      "props": {
+        "placeholder": "请选择活动区域"
+      },
+      "dataList": [
+        {
+          "label": "美食/餐厅线上活动",
+          "value": "type"
+        },
+        {
+          "label": "地推活动",
+          "value": "type"
+        },
+        {
+          "label": "线下主题活动",
+          "value": "type"
+        },
+        {
+          "label": "单纯品牌曝光",
+          "value": "type"
+        }
+      ]
+    },
+    {
+      "label": "即时配送",
+      "key": "delivery",
+      "type": "switch",
+      "style": {},
+      "props": {
+        "placeholder": "请选择活动区域"
+      }
+    },
+    {
+      "label": "特殊资源",
+      "key": "resource",
+      "type": "radio",
+      "style": {},
+      "props": {
+        "placeholder": "请选择活动区域"
+      },
+      "dataList": [
+        {
+          "label": "线上品牌商赞助",
+          "value": "radio1"
+        },
+        {
+          "label": "线下场地免费",
+          "value": "radio2"
+        }
+      ]
+    },
+    {
+      "label": "活动形式",
+      "key": "desc",
+      "type": "input",
+      "style": {"width": "80%"},
+      "props": {
+        "type": "textarea",
+        "placeholder": ""
+      }
+    }
+  ],
+  "rules": {
+    "name": [
+      { "required": true, "message": "请输入活动名称", "trigger": "blur" },
+      { "min": 3, "max": 5, "message": "长度在 3 到 5 个字符", "trigger": "blur" }
+    ],
+    "region": [
+      { "required": true, "message": "请选择活动区域", "trigger": "change" }
+    ],
+    "type": [
+      {
+        "type": "array",
+        "required": true,
+        "message": "请至少选择一个活动性质",
+        "trigger": "change"
+      }
+    ],
+    "resource": [
+      { "required": true, "message": "请选择活动资源", "trigger": "change" }
+    ],
+    "desc": [{ "required": true, "message": "请填写活动形式", "trigger": "blur" }]
+  },
+  "formData": {
+    "name": "",
+    "region": "",
+    "delivery": false,
+    "type": [],
+    "resource": "",
+    "desc": ""
+  },
+  "moduleName": "用户",
+  "formName": "ruleForm",
+  "dialogWidth": 760,
+  "labelPosition": "right"
+}

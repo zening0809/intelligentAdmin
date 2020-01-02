@@ -86,6 +86,8 @@ export function pageListMerge(sps, overrides, defaults) {
     total: 0,
     // 列表数据
     list: [],
+    entityDlgActn: 'add',
+    entityDlgVis: false,
     ...defaults
   }
   return merge(sps, overrides, defaults)
@@ -102,39 +104,7 @@ export function generateActions(config) {
     const item = items[i]
     // 是否显示消息框 赋默认值
     item.showMsg = item.showMsg || true
-    console.log(item.key)
     switch (item.key) {
-      case 'queryEntity':
-        actions.queryEntity = async function({
-          commit
-        }, {
-          entity,
-          success,
-          error,
-          berforeUpdate,
-          options
-        }) {
-          try {
-            const {
-              head,
-              body
-            } = await (item.caller || config.caller)[item.callee](entity, options)
-            if (head.code === '200') {
-              berforeUpdate && berforeUpdate(body)
-              commit('update', {
-                entity: body || {}
-              })
-              success && success(body, head)
-            } else {
-              this._vm.$message.error(head.subMessage)
-              error && error(body, head)
-            }
-          } catch (e) {
-            console.error('queryEntity', e)
-            error && error(undefined, undefined, e)
-          }
-        }
-        break
       case 'queryList':
         actions.queryList = async function({
           commit,

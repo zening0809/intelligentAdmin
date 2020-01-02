@@ -151,7 +151,9 @@ export default {
     },
     // 更新实体弹框可见状态
     updateEntityDlgVis(vis) {
-      this.entityDlgVis = vis
+      this.updateState({
+        entityDlgVis: vis
+      })
     }
   }
 }

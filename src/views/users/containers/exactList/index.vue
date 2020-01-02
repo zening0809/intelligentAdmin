@@ -9,7 +9,10 @@
       :loading="state.loading"
       :pageindexfun="pageIndexHandle"
       :pagesizefun="pageSizeHandle"
+      :update-state="updateState"
       :dispatch="dispatch"
+      :deleteCallBack="deleteCallBack"
+      :queryEntity="queryEntityCallBack"
     />
   </div>
 </template>
@@ -47,7 +50,7 @@ export default {
     }
   },
   computed: {
-    ...mapState('navigator', ['query'])
+    ...mapState('users', ['query'])
   },
   watch: {},
   beforeCreate() {},
@@ -66,7 +69,16 @@ export default {
     pageSizeHandle(val) {
       this.updateState({ pageIndex: 0, size: val, loading: true })
       this.dispatch('queryList', { query: this.query })
-    }
+    },
+    deleteCallBack(row, pk){
+      this.dispatch('deleteEntity', { id: row.id }).then(()=>{
+        this.dispatch('queryList')
+      })
+    },
+    queryEntityCallBack(row, pk){
+      this.dispatch('queryInfo', { [pk]: row[pk] }).then((res)=>{
+      })
+    },
   }
 }
 </script>
